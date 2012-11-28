@@ -1,0 +1,11 @@
+--type-set=ruby=.haml
+--type-set=coffee=.coffee
+--type-set=js=.coffee
+--type-set=css=.sass
+--type-set=css=.scss
+
+--ignore-dir=bundle
+--ignore-dir=tmp
+
+--color
+--sort-files
