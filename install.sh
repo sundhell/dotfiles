@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Clone git project and cd into the folder.
-#git clone git@github.com:PatrikWestlund/dotfiles.git ~/.dotfiles
-#cd ~/.dotfiles
+git clone git@github.com:PatrikWestlund/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 
 # Go trough all the files available in this folder.
 for sourceFile in *; do
