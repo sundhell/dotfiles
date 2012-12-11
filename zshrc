@@ -40,3 +40,6 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 
 # Rbenv
 eval "$(rbenv init -)"
+
+# Bindings
+bindkey '^R' history-incremental-search-backward
