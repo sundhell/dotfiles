@@ -35,7 +35,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export LC_CTYPE="utf-8"
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/share/npm/bin/
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/npm/bin
 export PATH="$HOME/.rbenv/bin:$PATH"
 
 # Rbenv
