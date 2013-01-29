@@ -10,8 +10,6 @@ set ruler
 set number
 set nowrap
 set list
-set cursorline
-set cursorcolumn
 
 " Indention
 set tabstop=2
