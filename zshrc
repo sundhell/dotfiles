@@ -43,3 +43,7 @@ eval "$(rbenv init -)"
 
 # Bindings
 bindkey '^R' history-incremental-search-backward
+
+# Aliases
+alias rflush = "redis-cli flushall"
+alias mflush = "echo 'flush_all' | nc localhost 11211"
