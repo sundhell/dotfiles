@@ -56,6 +56,16 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 au BufNewFile,BufRead *.ejs set filetype=js
 au BufNewFile,BufRead *.coffee set filetype=coffee
 
+" Mappings
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <leader>f :CtrlP<CR>
+map <leader>b :CtrlPBuffer<cr>
+map <leader>m :CtrlPMRU<cr>
+
+" Shortcuts for vimrc editing
+map <leader>v :e $MYVIMRC<CR><C-W>_
+map <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 Bundle 'gmarik/vundle'
 Bundle 'mileszs/ack.vim'
@@ -70,3 +80,4 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-bundler'
 Bundle 'Syntastic'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'rking/ag.vim'
