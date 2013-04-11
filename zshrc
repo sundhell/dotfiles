@@ -39,7 +39,8 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/npm/bi
 export PATH="$HOME/.rbenv/bin:$PATH"
 
 # Rbenv
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export RBENV_ROOT=/usr/local/var/rbenv
 
 # Bindings
 bindkey '^R' history-incremental-search-backward
