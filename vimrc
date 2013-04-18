@@ -69,7 +69,6 @@ map <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimr
 
 Bundle 'gmarik/vundle'
 Bundle 'mileszs/ack.vim'
-Bundle 'jeetsukumaran/vim-buffergator'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
