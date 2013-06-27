@@ -55,6 +55,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Filetypes
 au BufNewFile,BufRead *.ejs set filetype=js
 au BufNewFile,BufRead *.coffee set filetype=coffee
+au BufNewFile,BufRead *.slim set filetype=slim
 
 " Mappings
 map <C-J> <C-W>j<C-W>_
@@ -63,9 +64,15 @@ map <leader>f :CtrlP<CR>
 map <leader>b :CtrlPBuffer<cr>
 map <leader>m :CtrlPMRU<cr>
 
+" Navigate between splits
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+
 " Shortcuts for vimrc editing
 map <leader>v :e $MYVIMRC<CR><C-W>_
-map <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+map <silent> <leader>V :so $MYVIMRC
 
 Bundle 'gmarik/vundle'
 Bundle 'mileszs/ack.vim'
@@ -82,3 +89,4 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'rking/ag.vim'
 Bundle 'nono/vim-handlebars'
 Bundle 'tpope/vim-surround'
+Bundle 'slim-template/vim-slim'
