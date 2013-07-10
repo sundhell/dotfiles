@@ -45,7 +45,7 @@ set list listchars=tab:→\ ,trail:•
 set fileformats=unix,mac,dos
 
 " Eyecandy
-let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts=1
 let g:molokai_original = 1
 colorscheme molokai
 
@@ -83,7 +83,6 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-bundler'
@@ -93,3 +92,4 @@ Bundle 'nono/vim-handlebars'
 Bundle 'tpope/vim-surround'
 Bundle 'slim-template/vim-slim'
 Bundle 'mhinz/vim-signify'
+Bundle 'bling/vim-airline'
