@@ -56,6 +56,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 au BufNewFile,BufRead *.ejs set filetype=js
 au BufNewFile,BufRead *.coffee set filetype=coffee
 au BufNewFile,BufRead *.slim set filetype=slim
+au BufNewFile,BufRead *.hbs set filetype=handlebars
+au BufNewFile,BufRead *.rabl set filetype=ruby
+
 
 " Mappings
 map <C-J> <C-W>j<C-W>_
