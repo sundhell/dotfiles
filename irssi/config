@@ -30,9 +30,11 @@ settings = {
 ignores = (
   {
     level = "CRAP JOINS PARTS QUITS NICKS MODES";
-    channels = ("#saltside");
-    network  = "FreeNode";
+    channels = ( "#saltside" );
+    network = "FreeNode";
   }
 );
 
 hilights = ( { text = "pwestlund"; nick = "no"; word = "yes"; } );
+chatnets = { freenode = { type = "IRC"; }; };
+keyboard = ( { key = "^R"; id = "command"; data = "history_search "; } );
