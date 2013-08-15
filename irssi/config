@@ -25,6 +25,10 @@ settings = {
     scrollback_time = "7day ";
   };
   "fe-common/core" = { theme = "xchat"; };
+  "perl/core/scripts" = {
+    screen_away_active = "yes";
+    screen_away_nick = "pwestlund_away";
+  };
 };
 
 ignores = (
@@ -38,3 +42,32 @@ ignores = (
 hilights = ( { text = "pwestlund"; nick = "no"; word = "yes"; } );
 chatnets = { freenode = { type = "IRC"; }; };
 keyboard = ( { key = "^R"; id = "command"; data = "history_search "; } );
+windows = {
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  2 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#saltside";
+        tag = "freenode";
+      }
+    );
+  };
+  3 = {
+    items = (
+      {
+        type = "QUERY";
+        chat_type = "IRC";
+        name = "NickServ";
+        tag = "freenode";
+      }
+    );
+  };
+  4 = { name = "hilight"; sticky = "yes"; };
+};
+mainwindows = {
+  1 = { first_line = "8"; lines = "80"; };
+  4 = { first_line = "1"; lines = "7"; };
+};
+logs = { };
