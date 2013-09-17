@@ -28,6 +28,8 @@ settings = {
   "perl/core/scripts" = {
     screen_away_active = "yes";
     screen_away_nick = "pwestlund_away";
+    nicklist_height = "20";
+    nicklist_width = "30";
   };
 };
 
@@ -71,3 +73,21 @@ mainwindows = {
   4 = { first_line = "1"; lines = "7"; };
 };
 logs = { };
+statusbar = {
+  default = {
+    window = {
+      items = {
+        barstart = { priority = "100"; };
+        time = { };
+        user = { };
+        window = { };
+        window_empty = { };
+        lag = { priority = "-1"; };
+        act = { priority = "10"; };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+        usercount = { };
+      };
+    };
+  };
+};
