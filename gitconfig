@@ -1,0 +1,20 @@
+[user]
+  name = Patrik Westlund
+  email = patrik@patrikwestlund.se
+[diff]
+  tool = vimdiff
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[push]
+  default = upstream
+[core]
+  editor = /usr/bin/vim
+  excludesfile = ~/.gitignore_global
