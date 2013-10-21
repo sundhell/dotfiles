@@ -1,3 +1,5 @@
+set -g -x fish_greeting ''
+
 set -x PATH /usr/local/bin /usr/local/sbin /usr/local/share/npm/bin $PATH
 set PATH $HOME/.rbenv/bin $PATH
 set PATH $HOME/.rbenv/shims $PATH
