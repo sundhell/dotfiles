@@ -30,6 +30,7 @@ settings = {
     screen_away_nick = "pwestlund_away";
     nicklist_height = "20";
     nicklist_width = "30";
+    notifier_on_regex = ".*";
   };
 };
 
