@@ -50,7 +50,6 @@ set ruler
 set number
 set nowrap
 set list
-let g:airline_powerline_fonts=0
 let g:molokai_original = 1
 colorscheme molokai
 
