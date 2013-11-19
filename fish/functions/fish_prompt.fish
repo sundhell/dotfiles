@@ -25,6 +25,14 @@ function fish_prompt --description 'Write out the prompt'
   echo -n (prompt_pwd)
   set_color normal
 
+  if which rbenv >/dev/null ^&1
+    set_color $fish_color_user
+    echo -n ' ['
+    echo -n (rbenv version-name)
+    echo -n ']'
+    set_color normal
+  end
+
   # Nextline
   echo
   if not test $last_status -eq 0
