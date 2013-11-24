@@ -5,4 +5,7 @@ function fish_aliases -d "Store aliases"
   alias gc "git commit"
 
   alias be "bundle exec"
+
+  alias rflush "redis-cli flushall"
+  alias mflush "echo "flush_all" | nc localhost 11211"
 end
