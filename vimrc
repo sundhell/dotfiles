@@ -70,6 +70,8 @@ map <C-K> <C-W>k<C-W>_
 map <leader>f :CtrlP<CR>
 map <leader>b :CtrlPBuffer<cr>
 map <leader>m :CtrlPMRU<cr>
+map <leader>t :CtrlPTag<cr>
+map <silent> <leader>l :TagbarToggle<CR>
 
 " Navigate between splits
 nmap <silent> <c-k> :wincmd k<CR>
@@ -98,3 +100,4 @@ Bundle 'slim-template/vim-slim'
 Bundle 'mhinz/vim-signify'
 Bundle 'bling/vim-airline'
 Bundle 'rking/ag.vim'
+Bundle 'majutsushi/tagbar'
