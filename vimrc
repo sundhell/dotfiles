@@ -72,6 +72,7 @@ map <leader>b :CtrlPBuffer<cr>
 map <leader>m :CtrlPMRU<cr>
 map <leader>t :CtrlPTag<cr>
 map <silent> <leader>l :TagbarToggle<CR>
+nmap <silent> <leader>d <Plug>DashSearch
 
 " Navigate between splits
 nmap <silent> <c-k> :wincmd k<CR>
@@ -103,3 +104,5 @@ Bundle 'rking/ag.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'ngmy/vim-rubocop'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
