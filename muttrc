@@ -1,0 +1,90 @@
+set imap_user = 'patrik@saltside.se'
+set from      = 'patrik@saltside.se'
+set smtp_url  = 'smtp://patrik@saltside.se@smpt.gmail.com:587/'
+set realname  = 'Patrik Westlund'
+set editor    = 'vim -c "set spell spelllang=en_us"'
+
+set imap_check_subscribed
+set mail_check      = 120
+set timeout         = 300
+set imap_keepalive  = 300
+
+set folder    = 'imaps://imap.gmail.com/'
+set spoolfile = '+INBOX'
+set postponed = '[Gmail]/Drafts'
+set record    = '[Gmail]/Sent Mail'
+
+set move = no
+set include
+set sort = 'threads'
+hdr_order Date From To CC
+
+# Cache
+set header_cache      = ~/.mutt/cache/headers
+set message_cachedir  = ~/.mutt/cache/bodies
+set certificate_file  = ~/.mutt/certificates
+
+# Gmail style keybindings
+bind  editor <space> noop
+bind  index,pager c  mail     #Compose
+macro index,pager e  "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive conversation"
+bind  generic     x  tag-entry#Select Conversation
+bind  index       x  tag-thread#Select Conversation
+bind  pager       x  tag-message#Select Conversation
+bind  index,pager s  flag-message#Star a message
+macro index,pager +  <save-message>=[Gmail]/Important<enter><enter> "Mark as important"
+macro index,pager !  <save-message>=[Gmail]/Spam<enter><enter> "Report spam"
+bind  index,pager a  group-reply#Reply all
+bind  index,pager \# delete-thread#Delete
+bind  index,pager l  copy-message#Label
+bind  index,pager v  save-message#Move to
+macro index,pager I  <set-flag>O"Mark as read"
+macro index,pager U  <clear-flag>O"Mark as unread"
+macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>"enter"Go to all mail"
+macro index,pager gs <change-folder>=[Gmail]/Starred<enter>enter"Go to 'Starred'"
+macro index,pager gd <change-folder>=[Gmail]/Drafts<enter>enter"Go to 'Drafts'"
+macro index,pager gl <change-folder>?index"Go to 'Label'"
+macro index,pager gi <change-folder>=INBOX<enter>     "Go to inbox"
+macro index,pager gt "<change-folder>=[Gmail]/Sent Mail<enter>"enter"Go to 'Sent Mail'"
+folder-hook +INBOX 'macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive conversation"'
+folder-hook +[Gmail]/Trash macro index,pager y <save-message>=INBOX<enter><enter> "Move to inbox"
+folder-hook +[Gmail]/Starred bind  index,pager y flag-message #"Toggle star"
+
+# Molokai
+color   normal        default default             # default colours
+color   index         red default ~N              # new messages
+color   index         green default ~F            # flagged messages
+color   index         blue default ~T             # tagged messages
+color   index         cyan default ~D             # deleted messages
+color   body          brightyellow default        (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+color   body          brightgreen default         [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+color   attachment    magenta default             # attachments
+color   signature     brightwhite default         # sigs
+color   search        brightred black             # highlight results
+
+color   indicator     brightyellow default        # currently highlighted message
+color   error         red default                 # error messages
+color   status        white cyan                  # status line
+color   tree          brightblack default         # thread tree
+color   tilde         cyan default                # blank line padding
+
+color   hdrdefault    black cyan                  # default headers
+color   header        brightwhite cyan "^From:"
+color   header        brightwhite cyan "^Subject:"
+
+color   quoted        cyan default                # quote colours
+color   quoted1       brightcyan default
+color   quoted2       blue default
+color   quoted3       green default
+color   quoted4       yellow default
+color   quoted5       red default
+
+color   body          green default               "^gpg: Good signature from"
+color   body          brightred default           "^gpg: Bad signature from"
+color   body          brightred default           "^gpg: BAD signature from"
+color   body          brightred default           "^gpg: Note: This key has expired!"
+color   body          brightyellow default        "^gpg: WARNING: This key is not certified with a trusted signature!"
+color   body          brightyellow default        "^gpg:          There is no indication that the signature belongs to the owner."
+color   body          brightyellow default        "^gpg: can't handle these multiple signatures"
+color   body          brightyellow default        "^gpg: signature verification suppressed"
+color   body          brightyellow default        "^gpg: invalid node with packet of type"
