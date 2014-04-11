@@ -8,4 +8,5 @@ function fish_aliases -d "Store aliases"
 
   alias rflush "redis-cli flushall"
   alias mflush "echo "flush_all" | nc localhost 11211"
+  alias prst "touch tmp/restart.txt"
 end
