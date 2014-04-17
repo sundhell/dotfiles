@@ -1,5 +1,3 @@
-# name: Suvash
-
 set -xg fish_color_user magenta
 set -xg fish_color_host yellow
 

@@ -5,8 +5,8 @@ function fish_aliases -d "Store aliases"
   alias gc "git commit"
 
   alias be "bundle exec"
+  alias prst "touch tmp/restart.txt"
 
   alias rflush "redis-cli flushall"
-  alias mflush "echo "flush_all" | nc localhost 11211"
-  alias prst "touch tmp/restart.txt"
+  alias mflush "echo \"flush_all\" | nc localhost 11211"
 end
