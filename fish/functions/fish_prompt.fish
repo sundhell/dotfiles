@@ -25,9 +25,19 @@ function fish_prompt --description 'Write out the prompt'
 
   if which rbenv >/dev/null ^&1
     set_color $fish_color_user
-    echo -n ' ['
+    echo -n ' '
     echo -n (rbenv version-name)
-    echo -n ']'
+    set_color $fish_color_host
+    echo -n '|rb'
+    set_color normal
+  end
+
+  if which pyenv >/dev/null ^&1
+    set_color $fish_color_user
+    echo -n ' '
+    echo -n (pyenv version-name)
+    set_color $fish_color_host
+    echo -n '|py'
     set_color normal
   end
 
