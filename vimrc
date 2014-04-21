@@ -62,6 +62,7 @@ au BufNewFile,BufRead *.coffee set filetype=coffee
 au BufNewFile,BufRead *.slim set filetype=slim
 au BufNewFile,BufRead *.hbs set filetype=handlebars
 au BufNewFile,BufRead *.rabl set filetype=ruby
+au BufNewFile,BufRead *.fish set filetype=fish
 
 " Mappings
 let mapleader = ","
@@ -106,3 +107,4 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'ngmy/vim-rubocop'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+Bundle 'dag/vim-fish'
