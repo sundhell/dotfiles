@@ -42,6 +42,7 @@ set fillchars=        " No separator chars
 set timeoutlen=300    " Faster mappings
 set t_Co=256          " 256 colors
 set laststatus=2      " Always show statusline
+set scrolloff=1000    " Center current line vertically
 
 " Eyecandy
 syntax on
