@@ -1,5 +1,6 @@
 " Set shell to bash
 set shell=/bin/bash
+set clipboard=unnamed
 
 " Vundle setting
 set rtp+=~/.vim/bundle/vundle/
