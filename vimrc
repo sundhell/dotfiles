@@ -59,12 +59,12 @@ colorscheme molokai
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Filetypes
-au BufNewFile,BufRead *.ejs set filetype=js
-au BufNewFile,BufRead *.coffee set filetype=coffee
-au BufNewFile,BufRead *.slim set filetype=slim
-au BufNewFile,BufRead *.hbs set filetype=handlebars
-au BufNewFile,BufRead *.rabl set filetype=ruby
-au BufNewFile,BufRead *.fish set filetype=fish
+au BufNewFile,BufRead *.ejs     set filetype=js
+au BufNewFile,BufRead *.coffee  set filetype=coffee
+au BufNewFile,BufRead *.slim    set filetype=slim
+au BufNewFile,BufRead *.hbs     set filetype=handlebars
+au BufNewFile,BufRead *.rabl    set filetype=ruby
+au BufNewFile,BufRead *.fish    set filetype=fish
 
 " Mappings
 let mapleader = ","
@@ -74,8 +74,8 @@ map <leader>f :CtrlP<CR>
 map <leader>b :CtrlPBuffer<cr>
 map <leader>m :CtrlPMRU<cr>
 map <leader>t :CtrlPTag<cr>
+map <leader>n :NERDTreeToggle<cr>
 map <silent> <leader>l :TagbarToggle<CR>
-nmap <silent> <leader>d <Plug>DashSearch
 
 " Navigate between splits
 nmap <silent> <c-k> :wincmd k<CR>
@@ -95,18 +95,14 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-bundler'
 Bundle 'Syntastic'
-Bundle 'rking/ag.vim'
 Bundle 'nono/vim-handlebars'
 Bundle 'tpope/vim-surround'
 Bundle 'slim-template/vim-slim'
 Bundle 'mhinz/vim-signify'
 Bundle 'bling/vim-airline'
-Bundle 'rking/ag.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'ngmy/vim-rubocop'
 Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
 Bundle 'dag/vim-fish'
