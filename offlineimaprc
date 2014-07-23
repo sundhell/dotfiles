@@ -1,0 +1,39 @@
+[general]
+accounts = saltside.se
+pythonfile = ~/.offlineimap/keychain.py
+
+[Account saltside.se]
+localrepository = local_saltside.se
+remoterepository = remote_saltside.se
+
+[Repository local_saltside.se]
+type = Maildir
+localfolders = /Users/patrik/.mail/saltside.se
+nametrans: lambda folder: {'[Gmail]/Trash'   : 'trash',
+                           '[Gmail]/Spam'    : 'spam',
+                           '[Gmail]/Sent Mail' : 'sent',
+                           '[Gmail]/Drafts'    : 'drafts',
+                           '[Gmail]/All Mail'  : 'archive',
+                           'INBOX'             : 'inbox',
+                           }.get (folder, folder)
+
+[Repository remote_saltside.se]
+type = Gmail
+remoteuser = patrik@saltside.se
+remotepasseval = get_keychain_pass(account="patrik@saltside.se", server="imap.gmail.com")
+sslcacertfile = /usr/local/etc/openssl/cert.pem
+realdelete = no
+nametrans: lambda folder: {'[Gmail]/Trash'   : 'trash',
+                           '[Gmail]/Spam'    : 'spam',
+                           '[Gmail]/Sent Mail' : 'sent',
+                           '[Gmail]/Drafts'    : 'drafts',
+                           '[Gmail]/All Mail'  : 'archive',
+                           'INBOX'             : 'inbox',
+                           }.get (folder, folder)
+folderfilter: lambda folder: folder in ['[Gmail]/Trash',
+                                        '[Gmail]/Spam',
+                                        '[Gmail]/Sent Mail',
+                                        '[Gmail]/Drafts',
+                                        '[Gmail]/All Mail',
+                                        'INBOX'
+                                        ]
