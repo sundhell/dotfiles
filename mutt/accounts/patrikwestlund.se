@@ -1,0 +1,14 @@
+set from      = "patrik@patrikwestlund.se"
+set sendmail  = "/usr/bin/msmtp -a patrikwestlund.se"
+set mbox      = "+patrikwestlund.se/archive"
+set postponed = "+patrikwestlund.se/drafts"
+
+color status green default
+
+macro index D \
+    "<save-message>+patrikwestlund.se/trash<enter>" \
+    "move message to the trash"
+
+macro index S \
+    "<save-message>+patrikwestlund.se/spam<enter>"  \
+        "mark message as spam"

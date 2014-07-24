@@ -1,10 +1,14 @@
 [general]
-accounts = saltside.se
+accounts = patrikwestlund.se
 pythonfile = ~/.offlineimap/keychain.py
 
 [Account saltside.se]
 localrepository = local_saltside.se
 remoterepository = remote_saltside.se
+
+[Account patrikwestlund.se]
+localrepository = patrikwestlund.se_local
+remoterepository = patrikwestlund.se_remote
 
 [Repository local_saltside.se]
 type = Maildir
@@ -37,3 +41,32 @@ folderfilter: lambda folder: folder in ['[Gmail]/Trash',
                                         '[Gmail]/All Mail',
                                         'INBOX'
                                         ]
+
+[Repository patrikwestlund.se_local]
+type = Maildir
+localfolders = ~/.mail/patrikwestlund.se
+nametrans = lambda folder: {'inbox': 'INBOX',
+                            'archive': 'INBOX.Archive',
+                            'drafts': 'INBOX.Drafts',
+                            'sent': 'INBOX.Sent Items',
+                            'trash': 'INBOX.Trash',
+                            'spam': 'INBOX.Junk Mail',
+                              }.get(folder, folder)
+
+[Repository patrikwestlund.se_remote]
+type = IMAP
+remotehost = mail.messagingengine.com
+remoteport = 993
+remoteuser = patrikwestlund@fastmail.fm
+remotepasseval = get_keychain_pass(account="patrikwestlund@fastmail.fm", server="mail.messagingengine.com")
+ssl = yes
+sslcacertfile = /usr/local/etc/openssl/cert.pem
+nametrans = lambda folder: {'INBOX': 'inbox',
+                            'INBOX.Archive': 'archive',
+                            'INBOX.Drafts': 'drafts',
+                            'INBOX.Sent Items': 'sent',
+                            'INBOX.Trash': 'trash',
+                            'INBOX.Junk Mail': 'spam',
+                              }.get(folder, folder)
+
+expunge = no

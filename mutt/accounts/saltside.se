@@ -1,0 +1,14 @@
+set from      = "patrik@saltside.se"
+set sendmail  = "/usr/bin/msmtp -a saltside.se"
+set mbox      = "+saltside.se/archive"
+set postponed = "+saltside.se/drafts"
+
+color status cyan default
+
+macro index D \
+    "<save-message>+saltside.se/trash<enter>" \
+    "move message to the trash"
+
+macro index S \
+    "<save-message>+saltside.se/spam<enter>"  \
+        "mark message as spam"
