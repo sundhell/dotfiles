@@ -3,6 +3,8 @@ set folder           = ~/.mail               # mailbox location
 set tmpdir           = ~/.mutt/temp          # where to keep temp files
 set signature        = ~/.signature           # my signature file
 
+set sort = threads
+
 # Default inbox.
 set spoolfile = "+patrikwestlund.se/inbox"
 source ~/.mutt/accounts/patrikwestlund.se

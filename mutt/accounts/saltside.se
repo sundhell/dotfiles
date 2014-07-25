@@ -1,5 +1,5 @@
 set from      = "patrik@saltside.se"
-set sendmail  = "/usr/bin/msmtp -a saltside.se"
+set sendmail  = "/usr/local/bin/msmtp -a saltside.se"
 set mbox      = "+saltside.se/archive"
 set postponed = "+saltside.se/drafts"
 

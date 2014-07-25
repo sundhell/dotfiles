@@ -1,5 +1,5 @@
 set from      = "patrik@patrikwestlund.se"
-set sendmail  = "/usr/bin/msmtp -a patrikwestlund.se"
+set sendmail  = "/usr/local/bin/msmtp -a patrikwestlund.se"
 set mbox      = "+patrikwestlund.se/archive"
 set postponed = "+patrikwestlund.se/drafts"
 
