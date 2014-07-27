@@ -1,9 +1,42 @@
 # Paths ----------------------------------------------
-set folder           = ~/.mail               # mailbox location
-set tmpdir           = ~/.mutt/temp          # where to keep temp files
-set signature        = ~/.signature           # my signature file
+set folder    = ~/.mail
+set tmpdir    = ~/.mutt/temp
+set signature = ~/.signature
 
-set sort = threads
+# Index View Options ---------------------------------
+set date_format   = "%d/%m"
+set index_format  = "[%Z]  %D  %-20.20F  %s"
+set sort          = threads
+set sort_aux      = reverse-last-date-received
+
+# Pager View Options ---------------------------------
+set pager_index_lines = 10 # number of index lines to show
+set pager_context = 3      # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+
+# Pager Key Bindings ---------------------------------
+bind index gg   first-entry
+bind index G    last-entry
+bind pager k    previous-line
+bind pager j    next-line
+bind pager gg   top
+bind pager G    bottom
+bind pager R    group-reply
+
+bind index <tab>    sync-mailbox
+bind index <space>  collapse-thread
+
+# Saner copy/move dialogs
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+# View attachments properly.
+bind attach <return> view-mailcap
 
 # Default inbox.
 set spoolfile = "+patrikwestlund.se/inbox"
