@@ -3,6 +3,12 @@ set sendmail  = "/usr/local/bin/msmtp -a patrikwestlund.se"
 set mbox      = "+patrikwestlund.se/archive"
 set postponed = "+patrikwestlund.se/drafts"
 
+# Mailboxes to show in the sidebar.
+mailboxes +patrikwestlund.se/inbox \
+          +patrikwestlund.se/archive \
+          +patrikwestlund.se/sent \
+          +patrikwestlund.se/drafts
+
 color status green default
 
 # Sync email

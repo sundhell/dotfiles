@@ -3,6 +3,12 @@ set sendmail  = "/usr/local/bin/msmtp -a saltside.se"
 set mbox      = "+saltside.se/archive"
 set postponed = "+saltside.se/drafts"
 
+# Mailboxes to show in the sidebar.
+mailboxes +saltside.se/inbox \
+          +saltside.se/archive \
+          +saltside.se/sent \
+          +saltside.se/drafts
+
 color status cyan default
 
 # Sync email
