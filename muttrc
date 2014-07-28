@@ -10,7 +10,7 @@ set sort          = threads
 set sort_aux      = reverse-last-date-received
 
 # Pager View Options ---------------------------------
-set pager_index_lines = 10 # number of index lines to show
+set pager_index_lines = 20 # number of index lines to show
 set pager_context = 3      # number of context lines to show
 set pager_stop             # don't go to next message automatically
 set menu_scroll            # scroll in menus
