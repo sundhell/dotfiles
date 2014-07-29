@@ -12,8 +12,8 @@ mailboxes +patrikwestlund.se/inbox \
 color status green default
 
 # Sync email
-macro index O "<shell-escape>offlineimap -a patrikwestlund.se<enter>"           "run offlineimap to sync all mail"
-macro index o "<shell-escape>offlineimap -a patrikwestlund.se -qf INBOX<enter>" "run offlineimap to sync inbox"
+macro index O "<enter-command>unset wait_key<enter><shell-escape>offlineimap -a patrikwestlund.se<enter>"           "run offlineimap to sync all mail"
+macro index o "<enter-command>unset wait_key<enter><shell-escape>offlineimap -a patrikwestlund.se -qf INBOX<enter>" "run offlineimap to sync inbox"
 
 macro index D \
     "<save-message>+patrikwestlund.se/trash<enter>" \
