@@ -1,3 +1,6 @@
+# Color scheme --------------------------------------
+source ~/.mutt/colors.molokai
+
 # Paths ----------------------------------------------
 set folder    = ~/.mail
 set tmpdir    = ~/.mutt/temp
