@@ -1,8 +1,10 @@
 servers = (
   {
-    address = "irc.patrikwestlund.se";
-    chatnet = "freenode";
+    address = "saltside.irc.slack.com";
+    chatnet = "slack";
     port = "6667";
+    use_ssl = "yes";
+    ssl_verify = "no";
     autoconnect = "yes";
   }
 );
@@ -15,29 +17,35 @@ settings = {
   };
   "fe-common/core" = { theme = "xchat"; };
   "perl/core/scripts" = {
-    nicklist_height = "20";
-    nicklist_width = "30";
-    notifier_on_regex = "pwestlund";
+    notifier_on_regex = "patrik";
+    awl_placement = "top";
     awl_viewer = "no";
-    awl_block = "15";
-    awl_hide_data = "0";
   };
   core = {
     real_name = "Patrik Westlund";
+    user_name = "patrik";
+    nick = "patrik";
   };
 };
 
-hilights = ( { text = "pwestlund"; nick = "no"; word = "yes"; } );
+hilights = ( { text = "patrik"; nick = "no"; word = "yes"; } );
+chatnets = { slack = { type = "IRC"; nick = "patrik"; }; };
 statusbar = {
-  awl_0 = {
-    items = {
-      barstart = { priority = "100"; };
-      awl_0 = { };
-      barend = { priority = "100"; alignment = "right"; };
-    };
-  };
   default = {
+    window = {
+      items = {
+        barstart = { priority = "100"; };
+        time = { };
+        user = { };
+        window = { };
+        window_empty = { };
+        lag = { priority = "-1"; };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
     awl_0 = {
+      placement = "top";
       items = {
         barstart = { priority = "100"; };
         awl_0 = { };
@@ -46,5 +54,4 @@ statusbar = {
     };
   };
 };
-chatnets = { freenode = { type = "IRC"; }; };
-logs = { };
+ignores = ( { level = "MODES"; servertag = "slack"; } );
