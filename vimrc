@@ -55,6 +55,9 @@ set list
 let g:molokai_original = 1
 colorscheme molokai
 
+" Run rspec in tmux pane
+let g:rspec_command = 'Dispatch bundle exec rspec {spec}'
+
 " Close vim if NERDTree is the only buffer still open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -76,6 +79,12 @@ map <leader>m :CtrlPMRU<cr>
 map <leader>t :CtrlPTag<cr>
 map <leader>n :NERDTreeToggle<cr>
 map <silent> <leader>l :TagbarToggle<CR>
+
+" vim-rspec mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 " Navigate between splits
 nmap <silent> <c-k> :wincmd k<CR>
@@ -106,3 +115,5 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'ngmy/vim-rubocop'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'dag/vim-fish'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-dispatch'
