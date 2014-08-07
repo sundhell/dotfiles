@@ -17,9 +17,10 @@ settings = {
   };
   "fe-common/core" = { theme = "xchat"; };
   "perl/core/scripts" = {
-    notifier_on_regex = "patrik";
+    notifier_on_regex = "(!channel|!everyone|patrik)";
     awl_placement = "top";
     awl_viewer = "no";
+    notifier_on_privmsg = "1";
   };
   core = {
     real_name = "Patrik Westlund";
