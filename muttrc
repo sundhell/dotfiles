@@ -21,7 +21,7 @@ set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
 
 # Index View Options ---------------------------------
-set date_format   = "%d/%m"
+set date_format   = "%d/%m [%H:%M]"
 set index_format  = "[%Z]  %D  %-20.20F  %s"
 set sort          = threads
 set sort_aux      = reverse-last-date-received
