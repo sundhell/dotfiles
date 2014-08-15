@@ -79,6 +79,7 @@ map <leader>m :CtrlPMRU<cr>
 map <leader>t :CtrlPTag<cr>
 map <leader>n :NERDTreeToggle<cr>
 map <silent> <leader>l :TagbarToggle<CR>
+map <space> :noh<cr>
 
 " vim-rspec mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
