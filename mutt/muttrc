@@ -38,6 +38,7 @@ set tilde                  # show tildes like in vim
 unset markers              # no ugly plus signs
 set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 alternative_order text/plain text/enriched text/html
+auto_view text/html       # Render text/html with lynx
 
 # Compose View Options -------------------------------
 set realname = "Patrik Westlund"     # who am i?
