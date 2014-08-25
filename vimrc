@@ -62,12 +62,15 @@ let g:rspec_command = 'Dispatch bundle exec rspec {spec}'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Filetypes
-au BufNewFile,BufRead *.ejs     set filetype=js
-au BufNewFile,BufRead *.coffee  set filetype=coffee
-au BufNewFile,BufRead *.slim    set filetype=slim
-au BufNewFile,BufRead *.hbs     set filetype=handlebars
-au BufNewFile,BufRead *.rabl    set filetype=ruby
-au BufNewFile,BufRead *.fish    set filetype=fish
+au BufNewFile,BufRead *.ejs         set filetype=js
+au BufNewFile,BufRead *.coffee      set filetype=coffee
+au BufNewFile,BufRead *.slim        set filetype=slim
+au BufNewFile,BufRead *.hbs         set filetype=handlebars
+au BufNewFile,BufRead *.rabl        set filetype=ruby
+au BufNewFile,BufRead *.fish        set filetype=fish
+au BufNewFile,BufRead Dockerfile*   set filetype=Dockerfile
+au BufNewFile,BufRead *.dock        set filetype=Dockerfile
+au BufNewFile,BufRead *.thrift      set filetype=thrift
 
 " Mappings
 let mapleader = ","
@@ -118,3 +121,5 @@ Bundle 'rizzatti/funcoo.vim'
 Bundle 'dag/vim-fish'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-dispatch'
+Bundle 'ekalinin/Dockerfile.vim'
+Bundle 'solarnz/thrift.vim'
