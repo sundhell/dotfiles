@@ -1,10 +1,15 @@
-" Set shell to bash
-set shell=/bin/bash
-set clipboard=unnamed
+"
+" ============== INIT ==============
+"
+if $SHELL =~ 'fish'
+  set shell=/bin/sh
+endif
 
-" Vundle setting
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+
+"
+" ============== SETTINGS ==============
+"
+set clipboard=unnamed
 
 " White space
 set tabstop=2
@@ -35,7 +40,6 @@ set wildignore+=*/.git/*,*/.svn/*
 set wildignore+=.DS_Store
 set wildignore+=*/vendor/bundle/*,*/tmp/*,*/.*-cache/*
 
-
 set title             " Set terminal title
 set shortmess=atI     " Less interruptive prompts
 set vb t_vb=          " No beep or flash
@@ -43,7 +47,7 @@ set fillchars=        " No separator chars
 set timeoutlen=300    " Faster mappings
 set t_Co=256          " 256 colors
 set laststatus=2      " Always show statusline
-set scrolloff=1000    " Center current line vertically
+set scrolloff=10      " Center current line vertically
 
 " Eyecandy
 syntax on
@@ -55,13 +59,50 @@ set list
 let g:molokai_original = 1
 colorscheme molokai
 
-" Run rspec in tmux pane
-let g:rspec_command = 'Dispatch bundle exec rspec {spec}'
-
 " Close vim if NERDTree is the only buffer still open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Filetypes
+
+"
+" ============== PLUGINS ==============
+"
+if !isdirectory(expand('~/.vim/bundle/Vundle.vim'))
+  !git clone git://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+endif
+
+set runtimepath+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-rails'
+Plugin 'scrooloose/syntastic'
+Plugin 'nono/vim-handlebars'
+Plugin 'tpope/vim-surround'
+Plugin 'slim-template/vim-slim'
+Plugin 'mhinz/vim-signify'
+Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ngmy/vim-rubocop'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'dag/vim-fish'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-dispatch'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'solarnz/thrift.vim'
+
+call vundle#end()
+
+
+"
+" ============== FILETYPES ==============
+"
 au BufNewFile,BufRead *.ejs         set filetype=js
 au BufNewFile,BufRead *.coffee      set filetype=coffee
 au BufNewFile,BufRead *.slim        set filetype=slim
@@ -72,54 +113,28 @@ au BufNewFile,BufRead Dockerfile*   set filetype=Dockerfile
 au BufNewFile,BufRead *.dock        set filetype=Dockerfile
 au BufNewFile,BufRead *.thrift      set filetype=thrift
 
-" Mappings
+
+"
+" ============== MAPPINGS ==============
+"
 let mapleader = ","
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
-map <leader>f :CtrlP<CR>
+map <leader>f :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 map <leader>m :CtrlPMRU<cr>
 map <leader>t :CtrlPTag<cr>
 map <leader>n :NERDTreeToggle<cr>
-map <silent> <leader>l :TagbarToggle<CR>
 map <space> :noh<cr>
 
 " vim-rspec mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>t :call RunCurrentSpecFile()<cr>
+map <Leader>s :call RunNearestSpec()<cr>
+map <Leader>l :call RunLastSpec()<cr>
+map <Leader>a :call RunAllSpecs()<cr>
 
 " Navigate between splits
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
-
-" Shortcuts for vimrc editing
-map <leader>ve :vsp $MYVIMRC
-map <leader>se :source $MYVIMRC
-
-Bundle 'gmarik/vundle'
-Bundle 'mileszs/ack.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdtree'
-Bundle 'ervandew/supertab'
-Bundle 'tpope/vim-rails'
-Bundle 'Syntastic'
-Bundle 'nono/vim-handlebars'
-Bundle 'tpope/vim-surround'
-Bundle 'slim-template/vim-slim'
-Bundle 'mhinz/vim-signify'
-Bundle 'bling/vim-airline'
-Bundle 'majutsushi/tagbar'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'ngmy/vim-rubocop'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'dag/vim-fish'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-dispatch'
-Bundle 'ekalinin/Dockerfile.vim'
-Bundle 'solarnz/thrift.vim'
+nmap <silent> <c-k> :wincmd k<cr>
+nmap <silent> <c-j> :wincmd j<cr>
+nmap <silent> <c-h> :wincmd h<cr>
+nmap <silent> <c-l> :wincmd l<cr>

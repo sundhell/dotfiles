@@ -1,5 +1,8 @@
 *.swp
-mutt/temp
+*.log
+*log*
+*temp*
+*tmp*
+
 offlineimap/
 vim/bundle/
-irssi/away.log
