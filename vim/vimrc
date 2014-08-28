@@ -31,7 +31,6 @@ set fileformats=unix,mac,dos
 " Indention
 set cindent
 set smartindent
-filetype plugin indent on
 
 " Command-line
 set history=1000
@@ -98,6 +97,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'solarnz/thrift.vim'
 
 call vundle#end()
+filetype indent plugin on
 
 
 "
