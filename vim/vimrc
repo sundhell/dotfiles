@@ -95,6 +95,7 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-dispatch'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'solarnz/thrift.vim'
+Plugin 'tpope/vim-markdown'
 
 call vundle#end()
 filetype indent plugin on
@@ -112,6 +113,7 @@ au BufNewFile,BufRead *.fish        set filetype=fish
 au BufNewFile,BufRead Dockerfile*   set filetype=Dockerfile
 au BufNewFile,BufRead *.dock        set filetype=Dockerfile
 au BufNewFile,BufRead *.thrift      set filetype=thrift
+au BufNewFile,BufRead *.md          set filetype=markdown
 
 
 "
