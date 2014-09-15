@@ -96,6 +96,8 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'solarnz/thrift.vim'
 Plugin 'tpope/vim-markdown'
+Plugin 'axiom/vim-memcolo'
+Plugin 'CycleColor'
 
 call vundle#end()
 filetype indent plugin on
