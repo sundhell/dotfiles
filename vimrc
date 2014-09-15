@@ -55,8 +55,6 @@ set ruler
 set number
 set nowrap
 set list
-let g:molokai_original = 1
-colorscheme molokai
 
 " Close vim if NERDTree is the only buffer still open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
