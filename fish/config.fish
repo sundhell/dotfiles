@@ -6,3 +6,7 @@ fish_aliases
 set -l plugins_path (dirname (status -f))/plugins
 
 . $plugins_path/z.fish
+
+if test -e ~/.secrets
+  . ~/.secrets
+end
