@@ -59,6 +59,7 @@ set list
 " Close vim if NERDTree is the only buffer still open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+let g:vroom_use_vimux=1
 
 "
 " ============== PLUGINS ==============
@@ -96,6 +97,8 @@ Plugin 'solarnz/thrift.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'axiom/vim-memcolo'
 Plugin 'CycleColor'
+Plugin 'skalnik/vim-vroom'
+Plugin 'benmills/vimux'
 
 call vundle#end()
 filetype indent plugin on
