@@ -3,8 +3,11 @@
 *log*
 *temp*
 *tmp*
+*fifo*
 
 offlineimap/
 vim/bundle/
 vim/memcolo_color.vim
 vim/color.vim
+weechat/logs
+weechat/script
