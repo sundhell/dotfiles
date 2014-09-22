@@ -2,6 +2,7 @@ set from      = "patrik@saltside.se"
 set sendmail  = "/usr/local/bin/msmtp -a saltside.se"
 set mbox      = "+saltside.se/archive"
 set postponed = "+saltside.se/drafts"
+set record    = "+saltside.se/sent"
 
 # Mailboxes to show in the sidebar.
 mailboxes +saltside.se/inbox \
