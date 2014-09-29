@@ -99,6 +99,7 @@ Plugin 'axiom/vim-memcolo'
 Plugin 'CycleColor'
 Plugin 'skalnik/vim-vroom'
 Plugin 'benmills/vimux'
+Plugin 'jaxbot/semantic-highlight.vim'
 
 call vundle#end()
 filetype indent plugin on
@@ -143,3 +144,6 @@ nmap <silent> <c-k> :wincmd k<cr>
 nmap <silent> <c-j> :wincmd j<cr>
 nmap <silent> <c-h> :wincmd h<cr>
 nmap <silent> <c-l> :wincmd l<cr>
+
+" Semantic highlighting
+:nnoremap <Leader>s :SemanticHighlightToggle<cr>
