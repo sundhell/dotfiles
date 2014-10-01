@@ -90,7 +90,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'rizzatti/funcoo.vim'
 Plugin 'dag/vim-fish'
-Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-dispatch'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'solarnz/thrift.vim'
@@ -131,13 +130,8 @@ map <leader>b :CtrlPBuffer<cr>
 map <leader>m :CtrlPMRU<cr>
 map <leader>t :CtrlPTag<cr>
 map <leader>n :NERDTreeToggle<cr>
+map <leader>k :bd<cr>
 map <space> :noh<cr>
-
-" vim-rspec mappings
-map <Leader>t :call RunCurrentSpecFile()<cr>
-map <Leader>s :call RunNearestSpec()<cr>
-map <Leader>l :call RunLastSpec()<cr>
-map <Leader>a :call RunAllSpecs()<cr>
 
 " Navigate between splits
 nmap <silent> <c-k> :wincmd k<cr>
