@@ -99,6 +99,7 @@ Plugin 'CycleColor'
 Plugin 'skalnik/vim-vroom'
 Plugin 'benmills/vimux'
 Plugin 'jaxbot/semantic-highlight.vim'
+Plugin 'Lokaltog/vim-easymotion'
 
 call vundle#end()
 filetype indent plugin on
