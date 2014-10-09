@@ -100,6 +100,7 @@ Plugin 'skalnik/vim-vroom'
 Plugin 'benmills/vimux'
 Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()
 filetype indent plugin on
