@@ -1,7 +1,7 @@
 set -g -x fish_greeting ''
 
 fish_env_variables
-fish_aliases
+fish_user_abbreviations
 
 set -l plugins_path (dirname (status -f))/plugins
 
