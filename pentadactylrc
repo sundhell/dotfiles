@@ -1,0 +1,5 @@
+style -name tabbrowser-height-fix chrome://* <<EOM
+[dactyl-australis=true] .tabbrowser-tabs {
+max-height: unset !important;
+}
+EOM
