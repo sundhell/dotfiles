@@ -1,5 +1,5 @@
 # Color scheme --------------------------------------
-source ~/.mutt/colors.molokai
+source ~/.mutt/colors.mutt
 
 # Paths ----------------------------------------------
 set folder    = ~/.mail
