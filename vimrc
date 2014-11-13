@@ -61,6 +61,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 let g:vroom_use_vimux=1
 
+" Syntastic
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+
 "
 " ============== PLUGINS ==============
 "
