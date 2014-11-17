@@ -27,5 +27,7 @@ function fish_user_abbreviations
     'prst=touch tmp/restart.txt'\
     \
     'rflush=redis-cli flushall'\
-    'mflush=echo \"flush_all\" | nc localhost 11211'
+    'mflush=echo \"flush_all\" | nc localhost 11211'\
+    \
+    'bu=brew update; brew cask update; brew upgrade; brew cleanup'
 end
