@@ -64,6 +64,10 @@ let g:vroom_use_vimux=1
 " Syntastic
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
+" Undo history
+set undodir=~/.vim_undo_history
+set undofile
+
 "
 " ============== PLUGINS ==============
 "
