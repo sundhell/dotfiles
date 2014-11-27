@@ -34,8 +34,8 @@ set smartindent
 " Command-line
 set history=1000
 set wildmenu wildmode=longest,list:longest
-set wildignore+=*/.git/*,*/.svn/*
-set wildignore+=.DS_Store
+set wildignore+=*/.git/*,*/.svn/*,*/.vagrant/*,*/.bundle/*
+set wildignore+=.DS_Store,*.swp,
 set wildignore+=*/vendor/bundle/*,*/tmp/*,*/.*-cache/*
 
 set title             " Set terminal title
@@ -58,8 +58,6 @@ set list
 " Close vim if NERDTree is the only buffer still open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-let g:vroom_use_vimux=1
-
 " Syntastic
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
@@ -78,35 +76,39 @@ set runtimepath+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
-Plugin 'tpope/vim-rails'
 Plugin 'scrooloose/syntastic'
-Plugin 'nono/vim-handlebars'
 Plugin 'tpope/vim-surround'
-Plugin 'slim-template/vim-slim'
-Plugin 'mhinz/vim-signify'
 Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'rizzatti/funcoo.vim'
-Plugin 'dag/vim-fish'
 Plugin 'tpope/vim-dispatch'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'solarnz/thrift.vim'
-Plugin 'tpope/vim-markdown'
-Plugin 'axiom/vim-memcolo'
-Plugin 'CycleColor'
-Plugin 'skalnik/vim-vroom'
-Plugin 'benmills/vimux'
 Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
+
+" Git plugins
+Plugin 'tpope/vim-fugitive'
+Plugin 'mhinz/vim-signify'
+
+" Color scheme plugins
+Plugin 'axiom/vim-memcolo'
+Plugin 'CycleColor'
+
+" File type plugins
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-rails'
+Plugin 'nono/vim-handlebars'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'dag/vim-fish'
+Plugin 'solarnz/thrift.vim'
+Plugin 'tpope/vim-markdown'
+Plugin 'slim-template/vim-slim'
+
 
 call vundle#end()
 filetype indent plugin on
