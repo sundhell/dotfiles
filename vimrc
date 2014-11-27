@@ -141,6 +141,12 @@ map <leader>n :NERDTreeToggle<cr>
 map <leader>k :bd<cr>
 map <space> :noh<cr>
 
+" Disable arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
 " Navigate between splits
 nmap <silent> <c-k> :wincmd k<cr>
 nmap <silent> <c-j> :wincmd j<cr>
