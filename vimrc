@@ -76,8 +76,6 @@ set runtimepath+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
@@ -90,6 +88,12 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'Shougo/unite.vim'
+Plugin 'benmills/vimux'
+
+" File handling
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
 
 " Git plugins
 Plugin 'tpope/vim-fugitive'
@@ -142,6 +146,7 @@ map <leader>t :CtrlPTag<cr>
 map <leader>n :NERDTreeToggle<cr>
 map <leader>k :bd<cr>
 map <space> :noh<cr>
+map <leader>r :VimuxRunCommand("clear; bundle exec ruby " . bufname("%"))<cr>
 
 " Disable arrow keys
 map <up> <nop>
