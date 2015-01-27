@@ -125,7 +125,8 @@ Plugin 'dag/vim-fish'
 Plugin 'solarnz/thrift.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'slim-template/vim-slim'
-
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 
 call vundle#end()
 filetype indent plugin on
