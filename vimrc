@@ -73,8 +73,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " Undo history
-set undodir=~/.vim_undo_history
+set backup
 set undofile
+set backupdir=~/.vim/.backup
+set undodir=~/.vim/.undo
 
 "
 " ============== PLUGINS ==============

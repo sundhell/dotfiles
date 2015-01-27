@@ -11,3 +11,6 @@ vim/memcolo_color.vim
 vim/color.vim
 weechat/logs
 weechat/script
+
+vim/.undo/
+vim/.backup/
