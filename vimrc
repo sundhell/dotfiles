@@ -107,6 +107,7 @@ Plugin 'benmills/vimux'
 " File handling
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Rename'
 
 " Git plugins
 Plugin 'tpope/vim-fugitive'
