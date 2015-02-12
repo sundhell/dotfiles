@@ -69,9 +69,6 @@ endif
 " Close vim if NERDTree is the only buffer still open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Syntastic
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-
 " Undo history
 set backup
 set undofile
