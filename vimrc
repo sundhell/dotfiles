@@ -99,6 +99,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Shougo/unite.vim'
 Plugin 'benmills/vimux'
+Plugin 'gcmt/wildfire.vim'
 
 " File handling
 Plugin 'kien/ctrlp.vim'
