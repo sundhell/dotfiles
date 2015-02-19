@@ -36,7 +36,6 @@ set history=1000
 set wildmenu wildmode=longest,list:longest
 set wildignore+=*/.git/*,*/.svn/*,*/.vagrant/*,*/.bundle/*
 set wildignore+=.DS_Store,*.swp,
-set wildignore+=*/vendor/bundle/*,*/tmp/*,*/.*-cache/*
 
 set title             " Set terminal title
 set shortmess=atI     " Less interruptive prompts
