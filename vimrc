@@ -109,6 +109,8 @@ Plugin 'Rename'
 " Git plugins
 Plugin 'tpope/vim-fugitive'
 Plugin 'mhinz/vim-signify'
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
 
 " Color scheme plugins
 Plugin 'axiom/vim-memcolo'
