@@ -2,7 +2,7 @@ let mapleader = ","
 
 " Settings
 set gui=noaddons,nobookmarks,nomenu,nonavigation,tabs
-set hintchars=HJKLASDFGYUIOPQWERTNMZXCVB
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
 set defsearch=duckduckgo
 set ignorecase
 set incsearch
