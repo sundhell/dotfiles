@@ -1,6 +1,11 @@
-hi FontFixed -a font: 11px "Inconsolata" !important;
-style -name tabbrowser-height-fix chrome://* <<EOM
-  [dactyl-australis=true] .tabbrowser-tabs {
-    max-height: unset !important;
-  }
-EOM
+map , <Leader>
+
+" Settings
+set hintkeys=hjklasdfgyuiopqwertnmzxcvb
+set defsearch=duckduckgo
+set incfind
+
+" Mappings
+map <leader>ta :tab addons<CR>
+map <leader>td :tab downloads<CR>
+map <leader>tp :tab preferences<CR>
