@@ -1,7 +1,7 @@
 map , <Leader>
 
 " Settings
-set hintkeys=hjklasdfgyuiopqwertnmzxcvb
+set hintkeys=asdfg;lkjh
 set defsearch=duckduckgo
 set incfind
 
@@ -9,3 +9,9 @@ set incfind
 map <leader>ta :tab addons<CR>
 map <leader>td :tab downloads<CR>
 map <leader>tp :tab preferences<CR>
+map <leader>T :set showtabline=always<CR>
+map <leader>t :set showtabline=never<CR>
+
+" Smooth scroll setting
+set scrollsteps=1
+set scroll=40
