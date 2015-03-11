@@ -2,7 +2,7 @@ map , <Leader>
 
 " Settings
 set hintkeys=asdfg;lkjh
-set defsearch=duckduckgo
+set defsearch=google
 set incfind
 
 " Mappings
