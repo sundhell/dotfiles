@@ -77,59 +77,52 @@ set undodir=~/.vim/.undo
 "
 " ============== PLUGINS ==============
 "
-if !isdirectory(expand('~/.vim/bundle/Vundle.vim'))
-	!git clone git://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-endif
+call plug#begin('~/.vim/plugged')
 
-set runtimepath+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
-Plugin 'ervandew/supertab'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-surround'
-Plugin 'bling/vim-airline'
-Plugin 'majutsushi/tagbar'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'ngmy/vim-rubocop'
-Plugin 'rizzatti/funcoo.vim'
-Plugin 'tpope/vim-dispatch'
-Plugin 'jaxbot/semantic-highlight.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'Shougo/unite.vim'
-Plugin 'benmills/vimux'
-Plugin 'gcmt/wildfire.vim'
+Plug 'gmarik/Vundle.vim'
+Plug 'ervandew/supertab'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-surround'
+Plug 'bling/vim-airline'
+Plug 'majutsushi/tagbar'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ngmy/vim-rubocop'
+Plug 'rizzatti/funcoo.vim'
+Plug 'tpope/vim-dispatch'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Shougo/unite.vim'
+Plug 'benmills/vimux'
+Plug 'gcmt/wildfire.vim'
 
 " File handling
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Rename'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Rename'
 
 " Git plugins
-Plugin 'tpope/vim-fugitive'
-Plugin 'mhinz/vim-signify'
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
 
 " Color scheme plugins
-Plugin 'axiom/vim-memcolo'
-Plugin 'CycleColor'
+Plug 'axiom/vim-memcolo'
+Plug 'CycleColor'
 
 " File type plugins
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'tpope/vim-rails'
-Plugin 'nono/vim-handlebars'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'dag/vim-fish'
-Plugin 'solarnz/thrift.vim'
-Plugin 'tpope/vim-markdown'
-Plugin 'slim-template/vim-slim'
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plug 'kchmck/vim-coffee-script'
+Plug 'tpope/vim-rails'
+Plug 'nono/vim-handlebars'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'dag/vim-fish'
+Plug 'solarnz/thrift.vim'
+Plug 'tpope/vim-markdown'
+Plug 'slim-template/vim-slim'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
-call vundle#end()
-filetype indent plugin on
+call plug#end()
 
 
 "
@@ -173,6 +166,3 @@ nmap <silent> <c-k> :wincmd k<cr>
 nmap <silent> <c-j> :wincmd j<cr>
 nmap <silent> <c-h> :wincmd h<cr>
 nmap <silent> <c-l> :wincmd l<cr>
-
-" Semantic highlighting
-:nnoremap <Leader>s :SemanticHighlightToggle<cr>

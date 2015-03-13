@@ -6,7 +6,7 @@
 *fifo*
 
 offlineimap/
-vim/bundle/
+vim/plugged/
 vim/memcolo_color.vim
 vim/color.vim
 weechat/logs
