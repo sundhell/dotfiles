@@ -144,16 +144,14 @@ au BufNewFile,BufRead *.md          set filetype=markdown
 " ============== MAPPINGS ==============
 "
 let mapleader = ","
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
-map <leader>f :CtrlP<cr>
-map <leader>b :CtrlPBuffer<cr>
-map <leader>m :CtrlPMRU<cr>
-map <leader>t :CtrlPTag<cr>
-map <leader>n :NERDTreeToggle<cr>
-map <leader>k :bd<cr>
-map <space> :noh<cr>
-map <leader>r :VimuxRunCommand("clear; bundle exec ruby " . bufname("%"))<cr>
+nmap <leader>f :CtrlP<cr>
+nmap <leader>b :CtrlPBuffer<cr>
+nmap <leader>m :CtrlPMRU<cr>
+nmap <leader>t :CtrlPTag<cr>
+nmap <leader>n :NERDTreeToggle<cr>
+nmap <leader>k :bd<cr>
+nmap <leader>r :VimuxRunCommand("clear; bundle exec ruby " . bufname("%"))<cr>
+nmap <space> :noh<cr>
 
 " Disable arrow keys
 map <up> <nop>
