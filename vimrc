@@ -97,7 +97,7 @@ Plug 'gcmt/wildfire.vim'
 
 " File handling
 Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Rename'
 
 " Git plugins
@@ -111,16 +111,16 @@ Plug 'axiom/vim-memcolo'
 Plug 'CycleColor'
 
 " File type plugins
-Plug 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'tpope/vim-rails'
-Plug 'nono/vim-handlebars'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'dag/vim-fish'
-Plug 'solarnz/thrift.vim'
-Plug 'tpope/vim-markdown'
-Plug 'slim-template/vim-slim'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'nono/vim-handlebars', { 'for': 'handlebars' }
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
+Plug 'dag/vim-fish', { 'for': 'fish' }
+Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
+Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
+Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
 
 call plug#end()
 
