@@ -94,6 +94,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Shougo/unite.vim'
 Plug 'benmills/vimux'
 Plug 'gcmt/wildfire.vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " File handling
 Plug 'kien/ctrlp.vim'
