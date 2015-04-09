@@ -1,5 +1,5 @@
 #!/bin/sh
 
 session=$(tmux list-sessions | fzf)
-session=$(expr "$session" : '\([a-zA-Z/-]*\)')
+session=$(expr "$session" : '\([a-zA-Z0-9/-]*\)')
 `tmux switch-client -t "$session"`
