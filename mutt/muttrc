@@ -41,7 +41,7 @@ alternative_order text/plain text/enriched text/html
 auto_view text/html       # Render text/html with lynx
 
 # Compose View Options -------------------------------
-set realname = "Patrik Westlund"     # who am i?
+set realname = "Patrik Sundhäll"     # who am i?
 set envelope_from                    # which from?
 set sig_dashes                       # dashes before sig
 set edit_headers                     # show headers when composing
@@ -93,8 +93,8 @@ macro pager \Cu "|urlview<enter>" "call urlview to open links"
 bind attach <return> view-mailcap
 
 # Default inbox.
-set spoolfile = "+patrikwestlund.se/inbox"
-source ~/.mutt/accounts/patrikwestlund.se
+set spoolfile = "+sundhall.se/inbox"
+source ~/.mutt/accounts/sundhall.se
 
-folder-hook patrikwestlund.se/* source ~/.mutt/accounts/patrikwestlund.se
+folder-hook sundhall.se/* source ~/.mutt/accounts/sundhall.se
 folder-hook saltside.se/*       source ~/.mutt/accounts/saltside.se

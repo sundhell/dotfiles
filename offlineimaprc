@@ -1,14 +1,14 @@
 [general]
-accounts = patrikwestlund.se
+accounts = sundhall.se
 pythonfile = ~/.offlineimap/keychain.py
 
 [Account saltside.se]
 localrepository = local_saltside.se
 remoterepository = remote_saltside.se
 
-[Account patrikwestlund.se]
-localrepository = patrikwestlund.se_local
-remoterepository = patrikwestlund.se_remote
+[Account sundhall.se]
+localrepository = sundhall.se_local
+remoterepository = sundhall.se_remote
 
 [Repository local_saltside.se]
 type = Maildir
@@ -42,9 +42,9 @@ folderfilter: lambda folder: folder in ['[Gmail]/Trash',
                                         'INBOX'
                                         ]
 
-[Repository patrikwestlund.se_local]
+[Repository sundhall.se_local]
 type = Maildir
-localfolders = ~/.mail/patrikwestlund.se
+localfolders = ~/.mail/sundhall.se
 nametrans = lambda folder: {'inbox': 'INBOX',
                             'archive': 'INBOX.Archive',
                             'drafts': 'INBOX.Drafts',
@@ -53,7 +53,7 @@ nametrans = lambda folder: {'inbox': 'INBOX',
                             'spam': 'INBOX.Junk Mail',
                               }.get(folder, folder)
 
-[Repository patrikwestlund.se_remote]
+[Repository sundhall.se_remote]
 type = IMAP
 remotehost = mail.messagingengine.com
 remoteport = 993
