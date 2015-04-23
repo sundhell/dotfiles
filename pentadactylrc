@@ -1,6 +1,7 @@
 map , <Leader>
 
 " Settings
+set guioptions=bCrs
 set hintkeys=asdfg;lkjh
 set defsearch=google
 set incfind
@@ -12,6 +13,8 @@ map <leader>tp :tab preferences<CR>
 map <leader>t :set showtabline!=never,always<CR>
 map <leader>r :open readability<CR>
 map <leader>p :open pinboard<CR>
+map <leader>st :set guioptions!=T<CR>
+map <leader>ss :set guioptions!=s<CR>
 
 " Smooth scroll setting
 set scrollsteps=1
