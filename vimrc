@@ -122,6 +122,8 @@ Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'vim-pandoc/vim-pandoc', { 'for': [ 'pandoc', 'markdown' ] }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': [ 'pandoc', 'markdown' ] }
+Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
+Plug 'markcornick/vim-vagrant', { 'for': 'vagrant' }
 
 call plug#end()
 
@@ -139,6 +141,8 @@ au BufNewFile,BufRead Dockerfile*   set filetype=Dockerfile
 au BufNewFile,BufRead *.dock        set filetype=Dockerfile
 au BufNewFile,BufRead *.thrift      set filetype=thrift
 au BufNewFile,BufRead *.md          set filetype=markdown
+au BufNewFile,BufRead *.pp          set filetype=puppet
+au BufNewFile,BufRead Vagrantfile*  set filetype=vagrant
 
 
 "
