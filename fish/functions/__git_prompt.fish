@@ -1,28 +1,30 @@
 # Author: Suvash
-set -gx fish_color_git_clean green
-set -gx fish_color_git_staged yellow
-set -gx fish_color_git_dirty red
-
-set -gx fish_color_git_added green
-set -gx fish_color_git_modified yellow
-set -gx fish_color_git_renamed magenta
-set -gx fish_color_git_copied magenta
-set -gx fish_color_git_deleted red
-set -gx fish_color_git_untracked green
-set -gx fish_color_git_unmerged red
-
-set -gx fish_prompt_git_status_added '⚈ '
-set -gx fish_prompt_git_status_modified '⚈ '
-set -gx fish_prompt_git_status_renamed '⚒ '
-set -gx fish_prompt_git_status_copied '⚛ '
-set -gx fish_prompt_git_status_deleted '⚈ '
-set -gx fish_prompt_git_status_untracked '⚆ '
-set -gx fish_prompt_git_status_unmerged '☢ '
-
-set -gx fish_prompt_git_status_order added modified renamed copied deleted untracked unmerged
 
 function __git_prompt --description 'Sweet Git prompt'
+  set -l fish_color_git_clean green
+  set -l fish_color_git_staged yellow
+  set -l fish_color_git_dirty red
+
+  set -l fish_color_git_added green
+  set -l fish_color_git_modified yellow
+  set -l fish_color_git_renamed magenta
+  set -l fish_color_git_copied magenta
+  set -l fish_color_git_deleted red
+  set -l fish_color_git_untracked green
+  set -l fish_color_git_unmerged red
+
+  set -l fish_prompt_git_status_added '⚈ '
+  set -l fish_prompt_git_status_modified '⚈ '
+  set -l fish_prompt_git_status_renamed '⚒ '
+  set -l fish_prompt_git_status_copied '⚛ '
+  set -l fish_prompt_git_status_deleted '⚈ '
+  set -l fish_prompt_git_status_untracked '⚆ '
+  set -l fish_prompt_git_status_unmerged '☢ '
+
+  set -l fish_prompt_git_status_order added modified renamed copied deleted untracked unmerged
+
   set -l branch (git rev-parse --abbrev-ref HEAD ^/dev/null)
+
   if test -z $branch
     return
   end
