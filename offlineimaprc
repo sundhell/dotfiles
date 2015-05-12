@@ -12,7 +12,7 @@ remoterepository = sundhall.se_remote
 
 [Repository local_saltside.se]
 type = Maildir
-localfolders = /Users/patrik/.mail/saltside.se
+localfolders = ~/.mail/saltside.se
 nametrans: lambda folder: {'[Gmail]/Trash'   : 'trash',
                            '[Gmail]/Spam'    : 'spam',
                            '[Gmail]/Sent Mail' : 'sent',
