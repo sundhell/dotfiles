@@ -29,5 +29,8 @@ function fish_user_abbreviations
     'rflush=redis-cli flushall'\
     'mflush=echo \"flush_all\" | nc localhost 11211'\
     \
-    'bu=brew update; brew cask update; brew upgrade; brew cleanup'
+    'bu=brew update; brew cask update; brew upgrade; brew cleanup' \
+    \
+    'vha=vagrant global-status | awk "/running/{print $1}" | xargs -n 1 -- vagrant halt'\
+    'vsa=vagrant global-status | awk "/running/{print $1}" | xargs -n 1 -- vagrant up'
 end
