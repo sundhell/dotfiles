@@ -9,6 +9,7 @@ import re
 import urllib
 import urlparse
 import HTMLParser
+import sys
 from websocket import create_connection
 
 # hack to make tests possible.. better way?
@@ -19,7 +20,7 @@ except:
 
 SCRIPT_NAME = "slack_extension"
 SCRIPT_AUTHOR = "Ryan Huber <rhuber@gmail.com>"
-SCRIPT_VERSION = "0.97.22"
+SCRIPT_VERSION = "0.97.23"
 SCRIPT_LICENSE = "MIT"
 SCRIPT_DESC = "Extends weechat for typing notification/search/etc on slack.com"
 
@@ -221,6 +222,7 @@ class SlackServer(object):
             dbg("Sent {}...".format(message[:100]))
         except:
             self.failed_message = data
+            dbg("Unexpected error: {}\nSent: {}".format(sys.exc_info()[0], self.failed_message))
             self.connected = False
 
     def ping(self):
@@ -501,7 +503,10 @@ class Channel(SlackThing):
             async_slack_api_request(self.server.domain, self.server.token, SLACK_API_TRANSLATOR[self.type]["leave"], {"channel": self.identifier})
 
     def closed(self):
-        message_cache.pop(self.identifier)
+        try:
+            message_cache.pop(self.identifier)
+        except KeyError:
+            pass
         self.channel_buffer = None
         self.last_received = None
         self.close()
