@@ -1,0 +1,20 @@
+#!/bin/sh
+
+MAIL_DIR=~/.mail/*/inbox/new/*
+TMP_FILE=~/.checked_emails
+
+for f in $MAIL_DIR
+do
+	HASH=`echo $f | md5`
+
+	if grep -Fxq $HASH ~/.checked_emails
+	then
+		echo 'no match'
+	else
+		echo $f
+		from=`cat $f | grep 'From: '`
+		subject=`cat $f | grep 'Subject: '`
+		terminal-notifier -message "$subject" -title "$from"
+		echo "$HASH" >> "$TMP_FILE"
+	fi
+done
