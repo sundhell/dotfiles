@@ -5,10 +5,12 @@ pythonfile = ~/.offlineimap/keychain.py
 [Account saltside.se]
 localrepository = local_saltside.se
 remoterepository = remote_saltside.se
+postsynchook = ~/bin/notify_email
 
 [Account sundhall.se]
 localrepository = sundhall.se_local
 remoterepository = sundhall.se_remote
+postsynchook = ~/bin/notify_email
 
 [Repository local_saltside.se]
 type = Maildir
