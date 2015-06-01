@@ -97,4 +97,4 @@ set spoolfile = "+sundhall.se/inbox"
 source ~/.mutt/accounts/sundhall.se
 
 folder-hook sundhall.se/* source ~/.mutt/accounts/sundhall.se
-folder-hook saltside.se/*       source ~/.mutt/accounts/saltside.se
+folder-hook saltside.se/* source ~/.mutt/accounts/saltside.se
