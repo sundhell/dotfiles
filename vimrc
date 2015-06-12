@@ -152,7 +152,7 @@ let mapleader = ","
 nmap <leader>f :CtrlP<cr>
 nmap <leader>b :CtrlPBuffer<cr>
 nmap <leader>m :CtrlPMRU<cr>
-nmap <leader>t :CtrlPTag<cr>
+nmap <leader>t :CtrlPBufTag<cr>
 nmap <leader>n :NERDTreeToggle<cr>
 nmap <leader>k :bd<cr>
 nmap <leader>r :VimuxRunCommand("clear; bundle exec ruby " . bufname("%"))<cr>
