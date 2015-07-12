@@ -1,27 +1,27 @@
 [user]
-  name = Patrik Sundhäll
-  email = patrik@sundhall.se
+	name = Patrik Sundhäll
+	email = patrik@sundhall.se
 [diff]
-  tool = vimdiff
+	tool = vimdiff
 [color]
-  branch = auto
-  diff = auto
-  status = auto
+	branch = auto
+	diff = auto
+	status = auto
 [alias]
-  co = checkout
-  ci = commit
-  st = status
-  br = branch
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [push]
-  default = upstream
+	default = upstream
 [core]
-  editor = /usr/bin/vim
-  excludesfile = ~/.gitignore_global
+	editor = /usr/bin/vim
+	excludesfile = ~/.gitignore_global
 [init]
-  templatedir = ~/.git_template
+	templatedir = ~/.git_template
 [gist]
-  private = true
+	private = true
 [filter "media"]
 	required = true
 	clean = git media clean %f
