@@ -22,8 +22,8 @@ nametrans = lambda folder: {'inbox': 'INBOX',
 type = IMAP
 remotehost = mail.messagingengine.com
 remoteport = 993
-remoteuser = patrikwestlund@fastmail.fm
-remotepasseval = get_keychain_pass(account="patrikwestlund@fastmail.fm", server="mail.messagingengine.com")
+remoteuser = patrik@sundhall.se
+remotepasseval = get_keychain_pass(account="patrik@sundhall.se", server="mail.messagingengine.com")
 ssl = yes
 sslcacertfile = /usr/local/etc/openssl/cert.pem
 nametrans = lambda folder: {'INBOX': 'inbox',
