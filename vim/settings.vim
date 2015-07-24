@@ -1,12 +1,4 @@
 "
-" ============== INIT ==============
-"
-if $SHELL =~ 'fish'
-  set shell=/bin/sh
-endif
-
-
-"
 " ============== SETTINGS ==============
 "
 set clipboard=unnamed
@@ -74,59 +66,6 @@ set undofile
 set backupdir=~/.vim/.backup
 set undodir=~/.vim/.undo
 
-"
-" ============== PLUGINS ==============
-"
-call plug#begin('~/.vim/plugged')
-
-Plug 'gmarik/Vundle.vim'
-Plug 'ervandew/supertab'
-Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-surround'
-Plug 'bling/vim-airline'
-Plug 'majutsushi/tagbar'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'ngmy/vim-rubocop'
-Plug 'rizzatti/funcoo.vim'
-Plug 'tpope/vim-dispatch'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'scrooloose/nerdcommenter'
-Plug 'Shougo/unite.vim'
-Plug 'benmills/vimux'
-Plug 'gcmt/wildfire.vim'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-
-" File handling
-Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'Rename'
-
-" Git plugins
-Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
-Plug 'mattn/gist-vim'
-Plug 'mattn/webapi-vim'
-
-" Color scheme plugins
-Plug 'axiom/vim-memcolo'
-Plug 'CycleColor'
-
-" File type plugins
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-Plug 'tpope/vim-rails'
-Plug 'nono/vim-handlebars', { 'for': 'handlebars' }
-Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
-Plug 'dag/vim-fish', { 'for': 'fish' }
-Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-Plug 'slim-template/vim-slim', { 'for': 'slim' }
-Plug 'vim-pandoc/vim-pandoc', { 'for': [ 'pandoc', 'markdown' ] }
-Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': [ 'pandoc', 'markdown' ] }
-Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
-Plug 'markcornick/vim-vagrant', { 'for': 'vagrant' }
-
-call plug#end()
-
 
 "
 " ============== FILETYPES ==============
@@ -143,29 +82,3 @@ au BufNewFile,BufRead *.thrift      set filetype=thrift
 au BufNewFile,BufRead *.md          set filetype=markdown
 au BufNewFile,BufRead *.pp          set filetype=puppet
 au BufNewFile,BufRead Vagrantfile*  set filetype=vagrant
-
-
-"
-" ============== MAPPINGS ==============
-"
-let mapleader = ","
-nmap <leader>f :CtrlP<cr>
-nmap <leader>b :CtrlPBuffer<cr>
-nmap <leader>m :CtrlPMRU<cr>
-nmap <leader>t :CtrlPBufTag<cr>
-nmap <leader>n :NERDTreeToggle<cr>
-nmap <leader>k :bd<cr>
-nmap <leader>r :VimuxRunCommand("clear; bundle exec ruby " . bufname("%"))<cr>
-nmap <space> :noh<cr>
-
-" Disable arrow keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-
-" Navigate between splits
-nmap <silent> <c-k> :wincmd k<cr>
-nmap <silent> <c-j> :wincmd j<cr>
-nmap <silent> <c-h> :wincmd h<cr>
-nmap <silent> <c-l> :wincmd l<cr>
