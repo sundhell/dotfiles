@@ -1,0 +1,9 @@
+# vim: ft=muttrc
+# Macros ---------------------------------
+
+# Saner copy/move dialogs
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+# Open urls with urlview
+macro pager \Cu "|urlview<enter>" "call urlview to open links"

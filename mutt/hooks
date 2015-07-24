@@ -1,0 +1,8 @@
+# vim: ft=muttrc
+# Hooks ---------------------------------
+
+folder-hook sundhall.se/* source ~/.mutt/accounts/sundhall.se
+
+# Set default account
+set spoolfile = "+sundhall.se/inbox"
+source ~/.mutt/accounts/sundhall.se
