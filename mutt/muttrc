@@ -68,5 +68,3 @@ source ~/.mutt/colors
 source ~/.mutt/bindings
 source ~/.mutt/macros
 source ~/.mutt/hooks
-
-#set spoolfile = "+sundhall.se/inbox"
