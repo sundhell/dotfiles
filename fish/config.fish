@@ -1,23 +1,23 @@
 set -g -x fish_greeting ''
 
 # Set up PATH
-set -g fish_user_paths $HOME/bin
+set -g fish_user_paths $fish_user_paths $HOME/bin
 
 if which brew >/dev/null ^&1
-  set -g fish_user_paths /usr/local/bin
-  set -g fish_user_paths /usr/local/sbin
+  set -g fish_user_paths $fish_user_paths /usr/local/bin
+  set -g fish_user_paths $fish_user_paths /usr/local/sbin
 end
 
 if which rbenv >/dev/null ^&1
-  set -g fish_user_paths $HOME/.rbenv/shims
+  set -g fish_user_paths $fish_user_paths $HOME/.rbenv/shims
 end
 
 if which pyenv >/dev/null ^&1
-  set -g fish_user_paths $HOME/.pyenv/shims
+  set -g fish_user_paths $fish_user_paths $HOME/.pyenv/shims
 end
 
 if which composer >/dev/null ^&1
-  set -g fish_user_paths $HOME/.composer/vendor/bin
+  set -g fish_user_paths $fish_user_paths $HOME/.composer/vendor/bin
 end
 
 fish_env_variables
