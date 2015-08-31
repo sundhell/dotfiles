@@ -7,6 +7,11 @@ localrepository = sundhall.se_local
 remoterepository = sundhall.se_remote
 postsynchook = ~/bin/notify_email
 
+[Account smspark.se]
+localrepository = local_smspark.se
+remoterepository = remote_smspark.se
+postsynchook = ~/bin/notify_email
+
 [Repository sundhall.se_local]
 type = Maildir
 localfolders = ~/.mail/sundhall.se
@@ -35,3 +40,35 @@ nametrans = lambda folder: {'INBOX': 'inbox',
                               }.get(folder, folder)
 
 expunge = no
+
+[Repository local_smspark.se]
+type = Maildir
+localfolders = ~/.mail/smspark.se
+nametrans: lambda folder: {'[Gmail]/Trash'   : 'trash',
+                           '[Gmail]/Spam'    : 'spam',
+                           '[Gmail]/Sent Mail' : 'sent',
+                           '[Gmail]/Drafts'    : 'drafts',
+                           '[Gmail]/All Mail'  : 'archive',
+                           'INBOX'             : 'inbox',
+                           }.get (folder, folder)
+
+[Repository remote_smspark.se]
+type = Gmail
+remoteuser = patrik@smspark.se
+remotepasseval = get_keychain_pass(account="patrik@smspark.se", server="imap.gmail.com")
+sslcacertfile = /usr/local/etc/openssl/cert.pem
+realdelete = no
+nametrans: lambda folder: {'[Gmail]/Trash'   : 'trash',
+                           '[Gmail]/Spam'    : 'spam',
+                           '[Gmail]/Sent Mail' : 'sent',
+                           '[Gmail]/Drafts'    : 'drafts',
+                           '[Gmail]/All Mail'  : 'archive',
+                           'INBOX'             : 'inbox',
+                           }.get (folder, folder)
+folderfilter: lambda folder: folder in ['[Gmail]/Trash',
+                                        '[Gmail]/Spam',
+                                        '[Gmail]/Sent Mail',
+                                        '[Gmail]/Drafts',
+                                        '[Gmail]/All Mail',
+                                        'INBOX'
+                                        ]
