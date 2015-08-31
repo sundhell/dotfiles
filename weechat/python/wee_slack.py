@@ -21,7 +21,7 @@ except:
 
 SCRIPT_NAME = "slack_extension"
 SCRIPT_AUTHOR = "Ryan Huber <rhuber@gmail.com>"
-SCRIPT_VERSION = "0.98.6"
+SCRIPT_VERSION = "0.98.7"
 SCRIPT_LICENSE = "MIT"
 SCRIPT_DESC = "Extends weechat for typing notification/search/etc on slack.com"
 
@@ -126,6 +126,7 @@ class SlackServer(object):
         self.ws = None
         self.ws_hook = None
         self.users = SearchList()
+        self.bots = SearchList()
         self.channels = SearchList()
         self.connecting = False
         self.connected = False
@@ -151,6 +152,9 @@ class SlackServer(object):
     def add_user(self, user):
         self.users.append(user, user.get_aliases())
         users.append(user, user.get_aliases())
+
+    def add_bot(self, bot):
+        self.bots.append(bot)
 
     def add_channel(self, channel):
         self.channels.append(channel, channel.get_aliases())
@@ -259,6 +263,9 @@ class SlackServer(object):
 
         for item in data["users"]:
             self.add_user(User(self, item["name"], item["id"], item["presence"], item["deleted"]))
+
+        for item in data["bots"]:
+            self.add_bot(Bot(self, item["name"], item["id"], item["deleted"]))
 
         for item in data["channels"]:
             if "last_read" not in item:
@@ -771,6 +778,26 @@ class User(object):
         #reply = async_slack_api_request("im.open", {"channel":self.identifier,"ts":t})
         async_slack_api_request(self.server.domain, self.server.token, "im.open", {"user": self.identifier, "ts": t})
 
+class Bot(object):
+
+    def __init__(self, server, name, identifier, deleted=False):
+        self.server = server
+        self.name = name
+        self.identifier = identifier
+        self.deleted = deleted
+
+    def __eq__(self, compare_str):
+        if compare_str == self.identifier or compare_str == self.name:
+            return True
+        else:
+            return False
+
+    def __str__(self):
+        return "{}".format(self.identifier)
+
+    def __repr__(self):
+        return "{}".format(self.identifier)
+
 class Message(object):
 
     def __init__(self, message_json):
@@ -780,6 +807,8 @@ class Message(object):
         self.ts_time, self.ts_counter = message_json['ts'].split('.')
 
     def change_text(self, new_text):
+        if not isinstance(new_text, unicode):
+            new_text = unicode(new_text, 'utf-8')
         self.message_json["text"] = new_text
 
     def add_reaction(self, reaction):
@@ -928,6 +957,9 @@ def command_nodistractions(current_buffer, args):
 def command_distracting(current_buffer, args):
     global distracting_channels
     distracting_channels = [x.strip() for x in w.config_get_plugin("distracting_channels").split(',')]
+    if channels.find(current_buffer) is None:
+        w.prnt(current_buffer, "This command must be used in a channel buffer")
+        return
     fullname = channels.find(current_buffer).fullname()
     if distracting_channels.count(fullname) == 0:
         distracting_channels.append(fullname)
@@ -1119,6 +1151,8 @@ def slack_websocket_cb(server, fd):
     return w.WEECHAT_RC_OK
 
 def process_reply(message_json):
+    global unfurl_ignore_alt_text
+
     server = servers.find(message_json["myserver"])
     identifier = message_json["reply_to"]
     item = server.message_buffer.pop(identifier)
@@ -1126,7 +1160,9 @@ def process_reply(message_json):
         if item["type"] == "message" and "channel" in item.keys():
             item["ts"] = message_json["ts"]
             channels.find(item["channel"]).cache_message(item, from_me=True)
-            channels.find(item["channel"]).buffer_prnt(item["user"], item["text"], item["ts"])
+            text = unfurl_refs(item["text"], ignore_alt_text=unfurl_ignore_alt_text)
+
+            channels.find(item["channel"]).buffer_prnt(item["user"], text, item["ts"])
     dbg("REPLY {}".format(item))
 
 def process_pong(message_json):
@@ -1327,6 +1363,8 @@ def create_reaction_string(reactions):
 
 
 def process_message(message_json, cache=True):
+    global unfurl_ignore_alt_text
+
     try:
         # send these messages elsewhere
         known_subtypes = ['channel_join', 'channel_leave', 'channel_topic']
@@ -1358,10 +1396,7 @@ def process_message(message_json, cache=True):
 
         #text = text.decode('utf-8')
 
-        ignore_alt_text = False
-        if w.config_get_plugin('unfurl_ignore_alt_text') != "0":
-            ignore_alt_text = True
-        text = unfurl_refs(text, ignore_alt_text=ignore_alt_text)
+        text = unfurl_refs(text, ignore_alt_text=unfurl_ignore_alt_text)
 
         if "attachments" in message_json:
             text += u" --- {}".format(unwrap_attachments(message_json))
@@ -1369,11 +1404,11 @@ def process_message(message_json, cache=True):
         text = text.replace("\t", "    ")
         name = get_user(message_json, server)
 
-        if "reactions" in message_json:
-            text += create_reaction_string(message_json["reactions"])
-
         text = text.encode('utf-8')
         name = name.encode('utf-8')
+
+        if "reactions" in message_json:
+            text += create_reaction_string(message_json["reactions"])
 
         if "subtype" in message_json and message_json["subtype"] == "message_changed":
                 if "edited" in message_json["message"]:
@@ -1400,8 +1435,8 @@ def process_message(message_json, cache=True):
             channel.cache_message(message_json)
 
     except Exception:
-        if channel and ("text" in message_json) and message_json['text'] != None:
-            channel.buffer_prnt('unknown', message_json['text'].encode('utf-8'))
+        if channel and ("text" in message_json) and message_json['text'] is not None:
+            channel.buffer_prnt('unknown', message_json['text'])
         dbg("cannot process message {}\n{}".format(message_json, traceback.format_exc()))
 
 def unwrap_message(message_json):
@@ -1474,10 +1509,10 @@ def get_user(message_json, server):
         name = server.users.find(message_json['user']).name
     elif 'username' in message_json:
         name = u"-{}-".format(message_json["username"])
+    elif 'bot_id' in message_json:
+        name = u"{}:]".format(server.bots.find(message_json["bot_id"]).name)
     elif 'service_name' in message_json:
         name = u"-{}-".format(message_json["service_name"])
-    elif 'bot_id' in message_json:
-        name = u"-{}-".format(message_json["bot_id"])
     else:
         name = u""
     return name
@@ -1795,7 +1830,9 @@ def create_slack_debug_buffer():
 
 
 def config_changed_cb(data, option, value):
-    global slack_api_token, distracting_channels, channels_not_on_current_server_color, colorize_nicks, slack_debug, debug_mode
+    global slack_api_token, distracting_channels, channels_not_on_current_server_color, colorize_nicks, slack_debug, debug_mode, \
+        unfurl_ignore_alt_text
+
     slack_api_token = w.config_get_plugin("slack_api_token")
 
     if slack_api_token.startswith('${sec.data'):
@@ -1809,6 +1846,11 @@ def config_changed_cb(data, option, value):
     debug_mode = w.config_get_plugin("debug_mode").lower()
     if debug_mode != '' and debug_mode != 'false':
         create_slack_debug_buffer()
+
+    unfurl_ignore_alt_text = False
+    if w.config_get_plugin('unfurl_ignore_alt_text') != "0":
+        unfurl_ignore_alt_text = True
+
     return w.WEECHAT_RC_OK
 
 def quit_notification_cb(signal, sig_type, data):
