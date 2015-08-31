@@ -21,11 +21,7 @@ for sourceFile in *; do
   echo "$targetFile -> $PWD/$sourceFile"
 done;
 
-echo "Installing and updating submodule..."
-git submodule init
-git submodule update
-
 echo "Installing vim pluogins..."
-vim +BundleInstall +qall
+vim +PlugInstall +qall
 
 echo "Done.";
