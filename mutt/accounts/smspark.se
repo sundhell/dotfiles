@@ -1,0 +1,27 @@
+# vim: ft=muttrc
+# sundhall.se ---------------------------------
+
+set from      = "patrik@smspark.se"
+set sendmail  = "/usr/local/bin/msmtp -a smspark.se"
+set mbox      = "+smspark.se/archive"
+set postponed = "+smspark.se/drafts"
+set record    = "+smspark.se/sent"
+
+color status green default
+
+# Sync email
+macro index O \
+      "<enter-command>unset wait_key<enter><shell-escape>offlineimap -a smspark.se<enter>" \
+      "run offlineimap to sync all mail"
+
+macro index o \
+      "<enter-command>unset wait_key<enter><shell-escape>offlineimap -a smspark.se -qf INBOX<enter>"\
+      "run offlineimap to sync inbox"
+
+macro index D \
+      "<save-message>+smspark.se/trash<enter>" \
+      "move message to the trash"
+
+macro index S \
+      "<save-message>+smspark.se/spam<enter>"  \
+      "mark message as spam"
