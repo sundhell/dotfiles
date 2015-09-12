@@ -5,12 +5,10 @@ pythonfile = ~/.offlineimap/keychain.py
 [Account sundhall.se]
 localrepository = sundhall.se_local
 remoterepository = sundhall.se_remote
-postsynchook = ~/bin/notify_email
 
 [Account smspark.se]
 localrepository = local_smspark.se
 remoterepository = remote_smspark.se
-postsynchook = ~/bin/notify_email
 
 [Repository sundhall.se_local]
 type = Maildir
