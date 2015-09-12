@@ -45,6 +45,7 @@ set ruler
 set number
 set nowrap
 set list
+let g:airline_powerline_fonts = 1
 
 " Use a blinking upright bar cursor in Insert mode, a blinking block in normal
 if &term == 'xterm-256color' || &term == 'screen-256color'
