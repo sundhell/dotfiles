@@ -26,7 +26,7 @@ set smartindent
 " Command-line
 set history=1000
 set wildmenu wildmode=longest,list:longest
-set wildignore+=*/.git/*,*/.svn/*,*/.vagrant/*,*/.bundle/*
+set wildignore+=*/.git/*,*/.svn/*,*/.vagrant/*,*/.bundle/*,*/vendor/*
 set wildignore+=.DS_Store,*.swp,
 
 set title             " Set terminal title
