@@ -8,7 +8,7 @@ nmap <leader>m :CtrlPMRU<cr>
 nmap <leader>t :CtrlPBufTag<cr>
 nmap <leader>n :NERDTreeToggle<cr>
 nmap <leader>k :bd<cr>
-nmap <leader>r :VimuxRunCommand("clear; bundle exec ruby " . bufname("%"))<cr>
+nmap <leader>r :VimuxRunCommand("clear; phpunit -v " . bufname("%"))<cr>
 nmap <space> :noh<cr>
 
 " Disable arrow keys
