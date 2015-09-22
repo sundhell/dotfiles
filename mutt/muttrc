@@ -19,7 +19,7 @@ set thorough_search      # strip headers and eval mimes before searching
 
 # Index View Options ---------------------------------
 set date_format   = "%d/%m [%H:%M]"
-set index_format  = "[%Z]  %D  %-20.20F  %s"
+set index_format  = "[%Z]  %D  %-20.20F  %s %?y?[%y]?"
 set sort          = threads
 set sort_aux      = reverse-last-date-received
 set uncollapse_jump                        # don't collapse on an unread message
@@ -60,7 +60,7 @@ set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)
 
 # Header Options -------------------------------------
 ignore *                                # ignore all headers
-unignore from: to: cc: date: subject:   # show only these
+unignore from: to: cc: date: subject: X-Label:   # show only these
 unhdr_order *                           # some distros order things by default
 hdr_order from: to: cc: date: subject:  # and in this order
 
