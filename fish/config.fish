@@ -16,6 +16,10 @@ if which pyenv >/dev/null ^&1
   set -g fish_user_paths $fish_user_paths $HOME/.pyenv/shims
 end
 
+if which nenv >/dev/null ^&1
+  set -g fish_user_paths $fish_user_paths $HOME/.nenv
+end
+
 if which composer >/dev/null ^&1
   set -g fish_user_paths $fish_user_paths $HOME/.composer/vendor/bin
 end

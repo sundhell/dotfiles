@@ -60,6 +60,15 @@ function fish_vi_prompt --description 'Write out the prompt in vi mode'
     set_color normal
   end
 
+  if which nenv >/dev/null ^&1
+    set_color $fish_color_user
+    echo -n ' '
+    echo -n (nenv version-name)
+    set_color $fish_color_host
+    echo -n '|node'
+    set_color normal
+  end
+
   if which phpenv >/dev/null ^&1
     set_color $fish_color_user
     echo -n ' '
