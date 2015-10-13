@@ -7,7 +7,7 @@ set mbox      = "+sundhall.se/archive"
 set postponed = "+sundhall.se/drafts"
 set record    = "+sundhall.se/sent"
 
-color status green default
+color status blue default
 
 # Sync email
 macro index O \
