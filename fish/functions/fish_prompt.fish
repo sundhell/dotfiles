@@ -23,7 +23,7 @@ function fish_prompt --description 'Write out the prompt'
   set_color normal
 
 
-  # Ruby, python and PHP version managers
+  # Ruby, python, node and PHP version managers
   if which rbenv >/dev/null ^&1
     set_color $fish_color_user
     echo -n ' '
@@ -39,6 +39,15 @@ function fish_prompt --description 'Write out the prompt'
     echo -n (pyenv version-name)
     set_color $fish_color_host
     echo -n '|py'
+    set_color normal
+  end
+
+  if which nodenv >/dev/null ^&1
+    set_color $fish_color_user
+    echo -n ' '
+    echo -n (nodenv version-name)
+    set_color $fish_color_host
+    echo -n '|node'
     set_color normal
   end
 
