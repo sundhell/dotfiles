@@ -9,6 +9,8 @@ nmap <leader>t :CtrlPBufTag<cr>
 nmap <leader>n :NERDTreeToggle<cr>
 nmap <leader>k :bd<cr>
 nmap <leader>r :VimuxRunCommand("clear; phpunit -v " . bufname("%"))<cr>
+nmap <leader>R :VimuxRunCommand("clear; phpunit -v ")<cr>
+nmap <leader>p :Pandoc! html -c ~/.pandoc_templates/buttondown.css<cr>
 nmap <space> :noh<cr>
 
 " Disable arrow keys
