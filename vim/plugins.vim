@@ -44,8 +44,8 @@ Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
-Plug 'vim-pandoc/vim-pandoc', { 'for': [ 'pandoc', 'markdown' ] }
-Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': [ 'pandoc', 'markdown' ] }
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
 Plug 'markcornick/vim-vagrant', { 'for': 'vagrant' }
 
