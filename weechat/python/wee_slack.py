@@ -569,7 +569,7 @@ class Channel(object):
             tags = "notify_highlight"
         elif user != self.server.nick and self.name in self.server.users:
             tags = "notify_private,notify_message"
-        elif user in [w.prefix("join"), w.prefix("quit")]:
+        elif user in [x.strip() for x in w.prefix("join"), w.prefix("quit")]:
             tags = "irc_smart_filter"
         else:
             tags = "notify_message"
@@ -1465,43 +1465,60 @@ def unwrap_attachments(message_json):
 #    attachment_text = attachment_text.encode('ascii', 'ignore')
     return attachment_text
 
+def resolve_ref(ref):
+    if ref.startswith('@U'):
+        if users.find(ref[1:]):
+            try:
+                return "@{}".format(users.find(ref[1:]).name)
+            except:
+                dbg("NAME: {}".format(ref))
+    elif ref.startswith('#C'):
+        if channels.find(ref[1:]):
+            try:
+                return "{}".format(channels.find(ref[1:]).name)
+            except:
+                dbg("CHANNEL: {}".format(ref))
+
+    # Something else, just return as-is
+    return ref
+
+def unfurl_ref(ref, ignore_alt_text=False):
+    id = ref.split('|')[0]
+    display_text = ref
+    if ref.find('|') > -1:
+        if ignore_alt_text:
+            display_text = resolve_ref(id)
+        else:
+            if id.startswith("#C") or id.startswith("@U"):
+                display_text = ref.split('|')[1]
+            else:
+                url, desc = ref.split('|', 1)
+                display_text = "{} ({})".format(url, desc)
+    else:
+        display_text = resolve_ref(ref)
+    return display_text
 
 def unfurl_refs(text, ignore_alt_text=False):
     """
     Worst code ever written. this needs work
     """
     if text and text.find('<') > -1:
-        newtext = []
-        text = text.split(" ")
-        for item in text:
-            # dbg(item)
-            prefix = ""
-            suffix = ""
-            start = item.find('<')
-            end = item.find('>')
-            if start > -1 and end > -1:
-                prefix = item[:start]
-                suffix = item[end+1:]
-                item = item[start + 1:end]
-                if item.find('|') > -1:
-                    if ignore_alt_text:
-                        item = item.split('|')[1]
-                    else:
-                        item = item.split('|')[0]
-                if item.startswith('@U'):
-                    if users.find(item[1:]):
-                        try:
-                            item = "@{}".format(users.find(item[1:]).name)
-                        except:
-                            dbg("NAME: {}".format(item))
-                if item.startswith('#C'):
-                    if channels.find(item[1:]):
-                        item = "{}".format(channels.find(item[1:]).name)
-            newtext.append(prefix + item + suffix)
-        text = " ".join(newtext)
-        return text
-    else:
-        return text
+        end = 0
+        newtext = ""
+        while text.find('<') > -1:
+            # Prepend prefix
+            newtext += text[:text.find('<')]
+            text = text[text.find('<'):]
+            end = text.find('>')
+            if end == -1:
+                newtext += text
+                break
+            # Format thingabob
+            newtext += unfurl_ref(text[1:end], ignore_alt_text)
+            text = text[end+1:]
+        newtext += text
+        return newtext
+    return text
 
 
 def get_user(message_json, server):
@@ -1669,6 +1686,8 @@ def complete_next_cb(data, buffer, command):
     # If we're on a non-word, look left for something to complete
     while current_pos >= 0 and input[current_pos] != '@' and not input[current_pos].isalnum():
         current_pos = current_pos - 1
+    if current_pos < 0:
+        current_pos = 0
     for l in range(current_pos, 0, -1):
         if input[l] != '@' and not input[l].isalnum():
             word_start = l + 1
@@ -1690,14 +1709,15 @@ def complete_next_cb(data, buffer, command):
 
 # Slack specific requests
 
-# NOTE: switched to async/curl because sync slowed down the UI
+# NOTE: switched to async because sync slowed down the UI
 def async_slack_api_request(domain, token, request, post_data, priority=False):
     if not STOP_TALKING_TO_SLACK:
         post_data["token"] = token
-        url = 'https://{}/api/{}'.format(domain, request)
-        command = 'curl  -A "wee_slack {}" -s --data "{}" {}'.format(SCRIPT_VERSION, urllib.urlencode(post_data), url)
+        url = 'url:https://{}/api/{}?{}'.format(domain, request, urllib.urlencode(post_data))
         context = pickle.dumps({"request": request, "token": token, "post_data": post_data})
-        w.hook_process(command, 20000, "url_processor_cb", context)
+        params = { 'useragent': 'wee_slack {}'.format(SCRIPT_VERSION) }
+        dbg("URL: {} context: {} params: {}".format(url, context, params))
+        w.hook_process_hashtable(url, params, 20000, "url_processor_cb", context)
 
 # funny, right?
 big_data = {}
@@ -1713,8 +1733,8 @@ def url_processor_cb(data, command, return_code, out, err):
         try:
             my_json = json.loads(big_data[identifier])
         except:
-            dbg("curl failed, doing again...")
-            dbg("curl length: {} identifier {}\n{}".format(len(big_data[identifier]), identifier, data))
+            dbg("request failed, doing again...")
+            dbg("response length: {} identifier {}\n{}".format(len(big_data[identifier]), identifier, data))
             my_json = False
 
         big_data.pop(identifier, None)
@@ -1737,9 +1757,10 @@ def url_processor_cb(data, command, return_code, out, err):
                 if "channel" in my_json:
                     if "members" in my_json["channel"]:
                         channels.find(my_json["channel"]["id"]).members = set(my_json["channel"]["members"])
-    elif return_code != -1:
-        big_data.pop(identifier, None)
-        dbg("return code: {}".format(return_code))
+    else:
+        if return_code != -1:
+            big_data.pop(identifier, None)
+        dbg("return code: {}, data: {}".format(return_code, data))
 
     return w.WEECHAT_RC_OK
 
