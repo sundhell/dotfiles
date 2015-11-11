@@ -1,6 +1,8 @@
 "
 " ============== SETTINGS ==============
 "
+
+" Use system clipboard
 set clipboard=unnamed
 
 " White space
@@ -45,7 +47,11 @@ set ruler
 set number
 set nowrap
 set list
-let g:airline_powerline_fonts = 1
+
+" Lightline statusbar
+let g:lightline = {
+     \ 'colorscheme': 'jellybeans',
+     \ }
 
 " Use a blinking upright bar cursor in Insert mode, a blinking block in normal
 if &term == 'xterm-256color' || &term == 'screen-256color'
@@ -67,6 +73,33 @@ set undofile
 set backupdir=~/.vim/.backup
 set undodir=~/.vim/.undo
 
+" Markdown settings
+let g:markdown_fenced_languages = ['html', 'python', 'sh', 'php', 'ruby', 'json', 'javascript']
+
+" Snippets
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger           = '<tab>'
+let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" PDV
+let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
+nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
+
+"
+" ============== NEOVIM ==============
+"
+set mouse= " Remove mouse support as Neovim automatically enables mouse support
+
+"
+" ============== SYNTASTIC ==============
+"
+let g:syntastic_php_checkers = ['php', 'phpmd']
 
 "
 " ============== FILETYPES ==============

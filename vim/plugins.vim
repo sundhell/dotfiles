@@ -4,21 +4,21 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'gmarik/Vundle.vim'
-Plug 'ervandew/supertab'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
-Plug 'bling/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ngmy/vim-rubocop'
 Plug 'rizzatti/funcoo.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'Shougo/unite.vim'
 Plug 'benmills/vimux'
 Plug 'gcmt/wildfire.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'rking/ag.vim'
 
 " File handling
 Plug 'kien/ctrlp.vim'
@@ -34,6 +34,12 @@ Plug 'mattn/webapi-vim'
 " Color scheme plugins
 Plug 'axiom/vim-memcolo'
 Plug 'CycleColor'
+Plug 'gilgigilgil/anderson.vim'
+
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'Valloric/YouCompleteMe'
 
 " File type plugins
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
@@ -48,5 +54,8 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
 Plug 'markcornick/vim-vagrant', { 'for': 'vagrant' }
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tobyS/pdv'
+Plug 'kylef/apiblueprint.vim'
 
 call plug#end()
