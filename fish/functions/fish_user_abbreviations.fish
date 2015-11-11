@@ -8,17 +8,11 @@ function fish_user_abbreviations
     abbr -a tl='tmux list-sessions'
 
     abbr -a ga='git add'
-
     abbr -a gst='git status -sb'
-
     abbr -a gd='git diff'
-
     abbr -a gc='git commit -v'
-
     abbr -a gco='git checkout'
-
     abbr -a gb='git branch'
-
     abbr -a gl='git log'
 
     abbr -a be='bundle exec'
