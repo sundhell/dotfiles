@@ -22,3 +22,5 @@ set scroll=40
 
 " Passkeys
 set passkeys+='mail.google.com':jk<Return>,gt,ga,gf,gF
+set passkeys+='feedbin.com':hjkl
+set passkeys+='trello.com':jkb/cde<Esc><Return>flmn><qs<Space>tvwx?@#^
