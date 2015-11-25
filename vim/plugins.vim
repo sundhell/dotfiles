@@ -35,6 +35,7 @@ Plug 'mattn/webapi-vim'
 Plug 'axiom/vim-memcolo'
 Plug 'CycleColor'
 Plug 'gilgigilgil/anderson.vim'
+Plug 'morhetz/gruvbox'
 
 " Snippets
 Plug 'SirVer/ultisnips'
