@@ -476,17 +476,19 @@ class Channel(object):
         self.active = False
 
     def set_typing(self, user):
-        if w.buffer_get_integer(self.channel_buffer, "hidden") == 0:
-            self.typing[user] = time.time()
-            buffer_list_update_next()
+        if self.channel_buffer:
+            if w.buffer_get_integer(self.channel_buffer, "hidden") == 0:
+                self.typing[user] = time.time()
+                buffer_list_update_next()
 
     def unset_typing(self, user):
-        if w.buffer_get_integer(self.channel_buffer, "hidden") == 0:
-            try:
-                del self.typing[user]
-                buffer_list_update_next()
-            except:
-                pass
+        if self.channel_buffer:
+            if w.buffer_get_integer(self.channel_buffer, "hidden") == 0:
+                try:
+                    del self.typing[user]
+                    buffer_list_update_next()
+                except:
+                    pass
 
     def send_message(self, message):
         message = self.linkify_text(message)
@@ -1195,6 +1197,40 @@ def command_openweb(current_buffer, args):
             w.buffer_set(channel_buffer, "title", data["topic"])
     return w.WEECHAT_RC_OK
 
+def topic_command_cb(data, current_buffer, args):
+    if command_topic(current_buffer, args.split(None, 1)[1]):
+        return w.WEECHAT_RC_OK_EAT
+    else:
+        return w.WEECHAT_RC_OK
+
+def command_topic(current_buffer, args):
+    """
+    Change the topic of a channel
+    /slack topic [<channel>] [<topic>|-delete]
+    """
+    server = servers.find(current_domain_name())
+    if server:
+        arrrrgs = args.split(None, 1)
+        if arrrrgs[0].startswith('#'):
+            channel = server.channels.find(arrrrgs[0])
+            topic = arrrrgs[1]
+        else:
+            channel = server.channels.find(current_buffer)
+            topic = args
+
+        if channel:
+            if topic == "-delete":
+                async_slack_api_request(server.domain, server.token, 'channels.setTopic', {"channel": channel.identifier, "topic": ""})
+            else:
+                async_slack_api_request(server.domain, server.token, 'channels.setTopic', {"channel": channel.identifier, "topic": topic})
+            return True
+        else:
+            return False
+    else:
+        return False
+
+
+
 def slack_websocket_cb(server, fd):
     try:
         data = servers.find(server).ws.recv()
@@ -1313,7 +1349,8 @@ def process_channel_join(message_json):
 def process_channel_topic(message_json):
     server = servers.find(message_json["_server"])
     channel = server.channels.find(message_json["channel"])
-    channel.buffer_prnt(w.prefix("network").rstrip(), message_json["text"], message_json["ts"])
+    text = unfurl_refs(message_json["text"], ignore_alt_text=False)
+    channel.buffer_prnt(w.prefix("network").rstrip(), text, message_json["ts"])
     channel.set_topic(message_json["topic"])
 
 
@@ -2108,6 +2145,7 @@ if __name__ == "__main__":
             w.hook_command_run('/join', 'join_command_cb', '')
             w.hook_command_run('/part', 'part_command_cb', '')
             w.hook_command_run('/leave', 'part_command_cb', '')
+            w.hook_command_run('/topic', 'topic_command_cb', '')
             w.hook_command_run("/input complete_next", "complete_next_cb", "")
             w.hook_completion("nicks", "complete @-nicks for slack",
                             "nick_completion_cb", "")
