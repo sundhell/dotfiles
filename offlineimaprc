@@ -41,7 +41,6 @@ nametrans = lambda folder: {'INBOX': 'inbox',
                             'INBOX.Junk Mail': 'spam',
                               }.get(folder, folder)
 
-expunge = no
 
 [Repository local_smspark.se]
 type = GmailMaildir
