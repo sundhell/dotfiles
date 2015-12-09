@@ -4,7 +4,6 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'gmarik/Vundle.vim'
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'majutsushi/tagbar'
@@ -19,6 +18,7 @@ Plug 'benmills/vimux'
 Plug 'gcmt/wildfire.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'rking/ag.vim'
+Plug 'benekastah/neomake'
 
 " File handling
 Plug 'kien/ctrlp.vim'

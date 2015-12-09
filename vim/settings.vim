@@ -97,9 +97,13 @@ nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 set mouse= " Remove mouse support as Neovim automatically enables mouse support
 
 "
-" ============== SYNTASTIC ==============
+" ============== NEOMAKE ==============
 "
-let g:syntastic_php_checkers = ['php', 'phpmd']
+let g:neomake_php_enabled_makers = ['php', 'phpmd']
+let g:neomake_javascript_enabled_makers = ['standard', 'jshint']
+let g:neomake_json_enabled_makers = ['jsonlint']
+let g:neomake_ruby_enabled_makers = ['rubocop']
+autocmd! BufWritePost * Neomake
 
 "
 " ============== FILETYPES ==============
