@@ -51,6 +51,9 @@ set list
 " Lightline statusbar
 let g:lightline = {
      \ 'colorscheme': 'jellybeans',
+     \ 'component': {
+     \   'filename': '%{@%}',
+     \ }
      \ }
 
 " Use a blinking upright bar cursor in Insert mode, a blinking block in normal
