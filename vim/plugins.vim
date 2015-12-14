@@ -22,7 +22,7 @@ Plug 'benekastah/neomake'
 
 " File handling
 Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'Rename'
 
 " Git plugins
