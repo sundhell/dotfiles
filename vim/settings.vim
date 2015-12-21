@@ -123,6 +123,6 @@ au BufNewFile,BufRead *.fish        set filetype=fish
 au BufNewFile,BufRead Dockerfile*   set filetype=Dockerfile
 au BufNewFile,BufRead *.dock        set filetype=Dockerfile
 au BufNewFile,BufRead *.thrift      set filetype=thrift
-au BufNewFile,BufRead *.md          set filetype=markdown
+au BufNewFile,BufRead *.md          set filetype=pandoc
 au BufNewFile,BufRead *.pp          set filetype=puppet
 au BufNewFile,BufRead Vagrantfile*  set filetype=vagrant
