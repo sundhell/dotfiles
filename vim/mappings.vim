@@ -6,7 +6,7 @@ nmap <leader>f :CtrlP<cr>
 nmap <leader>b :CtrlPBuffer<cr>
 nmap <leader>m :CtrlPMRU<cr>
 nmap <leader>t :CtrlPBufTag<cr>
-nmap <leader>n :NERDTreeToggle<cr>
+nmap <leader>z :NERDTreeToggle<cr>
 nmap <leader>k :bd<cr>
 nmap <leader>r :VimuxRunCommand("clear; phpunit -v " . bufname("%"))<cr>
 nmap <leader>R :VimuxRunCommand("clear; phpunit -v ")<cr>
