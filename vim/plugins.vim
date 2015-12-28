@@ -25,6 +25,7 @@ Plug 'fmoralesc/vim-pad'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Rename'
+Plug 'tpope/vim-vinegar'
 
 " Git plugins
 Plug 'tpope/vim-fugitive'
