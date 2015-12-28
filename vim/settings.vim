@@ -69,7 +69,7 @@ if exists('$TMUX')
 endif
 
 " Close vim if NERDTree is the only buffer still open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Undo history
 set backup
