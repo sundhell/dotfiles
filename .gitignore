@@ -9,6 +9,8 @@ offlineimap/
 vim/plugged/
 vim/memcolo_color.vim
 vim/color.vim
+vim/spell/*.utf-8.spl
+vim/spell/*.utf-8.sug
 weechat/logs
 weechat/script
 weechat/*.cache
