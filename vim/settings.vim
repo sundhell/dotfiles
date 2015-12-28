@@ -112,6 +112,14 @@ let g:neomake_ruby_enabled_makers = ['rubocop']
 autocmd! BufWritePost * Neomake
 
 "
+" ============== GOYO ==============
+"
+let g:goyo_width = '80'
+let g:goyo_height = '80%'
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+"
 " ============== FILETYPES ==============
 "
 au BufNewFile,BufRead *.ejs         set filetype=js

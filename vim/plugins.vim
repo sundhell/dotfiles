@@ -58,5 +58,7 @@ Plug 'markcornick/vim-vagrant', { 'for': 'vagrant' }
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tobyS/pdv'
 Plug 'kylef/apiblueprint.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 call plug#end()
