@@ -77,6 +77,8 @@ set undofile
 set backupdir=~/.vim/.backup
 set undodir=~/.vim/.undo
 
+let g:pad#dir = '~/.vim-pad'
+
 " Markdown settings
 let g:markdown_fenced_languages = ['html', 'python', 'sh', 'php', 'ruby', 'json', 'javascript']
 
