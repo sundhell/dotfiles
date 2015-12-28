@@ -106,7 +106,7 @@ set mouse= " Remove mouse support as Neovim automatically enables mouse support
 " ============== NEOMAKE ==============
 "
 let g:neomake_php_enabled_makers = ['php', 'phpmd']
-let g:neomake_javascript_enabled_makers = ['standard', 'jshint']
+let g:neomake_javascript_enabled_makers = ['jshint']
 let g:neomake_json_enabled_makers = ['jsonlint']
 let g:neomake_ruby_enabled_makers = ['rubocop']
 autocmd! BufWritePost * Neomake
