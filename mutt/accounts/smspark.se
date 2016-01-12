@@ -11,11 +11,11 @@ color status green default
 
 # Sync email
 macro index O \
-      "<enter-command>unset wait_key<enter><shell-escape>offlineimap -a smspark.se<enter>" \
+      "<enter-command>unset wait_key<enter><shell-escape>offlineimap -a smspark.se -o<enter>" \
       "run offlineimap to sync all mail"
 
 macro index o \
-      "<enter-command>unset wait_key<enter><shell-escape>offlineimap -a smspark.se -qf INBOX<enter>"\
+      "<enter-command>unset wait_key<enter><shell-escape>offlineimap -a smspark.se -o -qf INBOX<enter>"\
       "run offlineimap to sync inbox"
 
 macro index A \
