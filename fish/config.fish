@@ -28,6 +28,8 @@ fish_env_variables
 fish_user_abbreviations
 fish_vi_mode
 
+set fish_key_bindings fish_user_key_bindings
+
 set -l plugins_path (dirname (status -f))/plugins
 
 . $plugins_path/z.fish
