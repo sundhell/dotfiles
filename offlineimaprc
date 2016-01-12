@@ -5,10 +5,12 @@ pythonfile = ~/.offlineimap/keychain.py
 [Account sundhall.se]
 localrepository = sundhall.se_local
 remoterepository = sundhall.se_remote
+autorefresh = 1
 
 [Account smspark.se]
 localrepository = local_smspark.se
 remoterepository = remote_smspark.se
+autorefresh = 1
 
 synclabels = yes
 labelsheader = X-Label
@@ -40,6 +42,7 @@ nametrans = lambda folder: {'INBOX': 'inbox',
                             'INBOX.Trash': 'trash',
                             'INBOX.Junk Mail': 'spam',
                               }.get(folder, folder)
+idlefolders = ['INBOX']
 
 
 [Repository local_smspark.se]
@@ -73,3 +76,4 @@ folderfilter: lambda folder: folder in ['[Gmail]/Trash',
                                         '[Gmail]/All Mail',
                                         'INBOX'
                                         ]
+idlefolders = ['INBOX']
