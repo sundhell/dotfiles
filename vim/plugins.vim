@@ -20,6 +20,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'rking/ag.vim'
 Plug 'benekastah/neomake'
 Plug 'fmoralesc/vim-pad'
+Plug 'captbaritone/better-indent-support-for-php-with-html'
 
 " File handling
 Plug 'kien/ctrlp.vim'

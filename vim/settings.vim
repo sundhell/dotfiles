@@ -121,6 +121,8 @@ let g:goyo_height = '80%'
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+let g:html_indent_inctags = "html,body,head,tbody"
+
 "
 " ============== FILETYPES ==============
 "
