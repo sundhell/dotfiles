@@ -611,6 +611,9 @@ class Channel(object):
             if user == self.last_active_user and prefix_same_nick != "":
                 name = prefix_same_nick
             else:
+                nick_prefix = w.config_string(w.config_get('weechat.look.nick_prefix'))
+                nick_suffix = w.config_string(w.config_get('weechat.look.nick_suffix'))
+
                 if self.server.users.find(user):
                     name = self.server.users.find(user).formatted_name()
                     self.last_active_user = user
@@ -618,6 +621,7 @@ class Channel(object):
                 else:
                     name = user
                     self.last_active_user = None
+                name = nick_prefix + name + nick_suffix
             name = name.decode('utf-8')
             #colorize nicks in each line
             chat_color = w.config_string(w.config_get('weechat.color.chat'))
@@ -1286,7 +1290,7 @@ def process_reply(message_json):
     server = servers.find(message_json["_server"])
     identifier = message_json["reply_to"]
     item = server.message_buffer.pop(identifier)
-    if type(item['text']) is not unicode:
+    if 'text' in item and type(item['text']) is not unicode:
         item['text'] = item['text'].decode('UTF-8', 'replace')
     if "type" in item:
         if item["type"] == "message" and "channel" in item.keys():
