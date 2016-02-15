@@ -291,7 +291,10 @@ class SlackServer(object):
             if "last_read" not in item:
                 item["last_read"] = 0
             if not item["is_archived"]:
-                self.add_channel(GroupChannel(self, item["name"], item["id"], item["is_open"], item["last_read"], "#", item["members"], item["topic"]["value"]))
+                if item["name"].startswith("mpdm-"):
+                    self.add_channel(MpdmChannel(self, item["name"], item["id"], item["is_open"], item["last_read"], "#", item["members"], item["topic"]["value"]))
+                else:
+                    self.add_channel(GroupChannel(self, item["name"], item["id"], item["is_open"], item["last_read"], "#", item["members"], item["topic"]["value"]))
         for item in data["ims"]:
             if "last_read" not in item:
                 item["last_read"] = 0
@@ -328,7 +331,7 @@ def buffer_input_cb(b, buffer, data):
     elif data.count('/') == 3:
         old, new = data.split('/')[1:3]
         channel = channels.find(buffer)
-        channel.change_previous_message(old, new)
+        channel.change_previous_message(old.decode("utf-8"), new.decode("utf-8"))
     channel.mark_read(True)
     return w.WEECHAT_RC_ERROR
 
@@ -504,11 +507,11 @@ class Channel(object):
         message = message.split(' ')
         for item in enumerate(message):
             if item[1].startswith('@') and len(item[1]) > 1:
-                named = re.match('.*[@#](\w+)(\W*)', item[1]).groups()
+                named = re.match('.*[@#]([\w.]+\w)(\W*)', item[1]).groups()
                 if named[0] in ["group", "channel", "here"]:
                     message[item[0]] = "<!{}>".format(named[0])
                 if self.server.users.find(named[0]):
-                    message[item[0]] = "<@{}|{}>{}".format(self.server.users.find(named[0]).identifier, named[0], named[1])
+                    message[item[0]] = "<@{}>{}".format(self.server.users.find(named[0]).identifier, named[1])
             if item[1].startswith('#') and self.server.channels.find(item[1]):
                 named = re.match('.*[@#](\w+)(\W*)', item[1]).groups()
                 if self.server.channels.find(named[0]):
@@ -659,7 +662,7 @@ class Channel(object):
     def has_message(self, ts):
         return self.messages.count(ts) > 0
 
-    def change_message(self, ts, text=None):
+    def change_message(self, ts, text=None, suffix=''):
         if self.has_message(ts):
             message_index = self.messages.index(ts)
 
@@ -671,7 +674,7 @@ class Channel(object):
             #we do this because time resolution in weechat is less than slack
             int_time = int(float(ts))
             if self.messages.count(str(int_time)) == 1:
-                modify_buffer_line(self.channel_buffer, text, int_time)
+                modify_buffer_line(self.channel_buffer, text + suffix, int_time)
             #otherwise redraw the whole buffer, which is expensive
             else:
                 self.buffer_redraw()
@@ -697,7 +700,7 @@ class Channel(object):
             async_slack_api_request(self.server.domain, self.server.token, 'chat.delete', {"channel": self.identifier, "ts": message['ts']})
         else:
             new_message = message["text"].replace(old, new)
-            async_slack_api_request(self.server.domain, self.server.token, 'chat.update', {"channel": self.identifier, "ts": message['ts'], "text": new_message})
+            async_slack_api_request(self.server.domain, self.server.token, 'chat.update', {"channel": self.identifier, "ts": message['ts'], "text": new_message.encode("utf-8")})
 
     def my_last_message(self):
         for message in reversed(self.messages):
@@ -727,6 +730,12 @@ class GroupChannel(Channel):
         super(GroupChannel, self).__init__(server, name, identifier, active, last_read, prepend_name, members, topic)
         self.type = "group"
 
+class MpdmChannel(Channel):
+
+    def __init__(self, server, name, identifier, active, last_read=0, prepend_name="", members=[], topic=""):
+        name = ",".join("-".join(name.split("-")[1:-1]).split("--"))
+        super(MpdmChannel, self).__init__(server, name, identifier, active, last_read, prepend_name, members, topic)
+        self.type = "group"
 
 class DmChannel(Channel):
 
@@ -1582,7 +1591,10 @@ def process_message(message_json, cache=True):
                 channel.buffer_prnt(w.prefix("action").rstrip(), text, time)
 
             else:
-                channel.buffer_prnt(name, text, time)
+                suffix = ''
+                if 'edited' in message_json:
+                    suffix = ' (edited)'
+                channel.buffer_prnt(name, text + suffix, time)
 
 
             if cache:
@@ -1590,9 +1602,9 @@ def process_message(message_json, cache=True):
 
     except Exception:
         channel = channels.find(message_json["channel"])
+        dbg("cannot process message {}\n{}".format(message_json, traceback.format_exc()))
         if channel and ("text" in message_json) and message_json['text'] is not None:
             channel.buffer_prnt('unknown', message_json['text'])
-        dbg("cannot process message {}\n{}".format(message_json, traceback.format_exc()))
 
 
 def process_message_changed(message_json):
@@ -1616,8 +1628,9 @@ def process_message_changed(message_json):
     m["text"] += unwrap_attachments(message_json, text_before)
     channel = channels.find(message_json["channel"])
     if "edited" in m:
-        m["text"] += " (edited)"
-    channel.change_message(m["ts"], m["text"])
+        channel.change_message(m["ts"], m["text"], ' (edited)')
+    else:
+        channel.change_message(m["ts"], m["text"])
 
 
 def process_message_deleted(message_json):
@@ -1675,24 +1688,18 @@ def unfurl_ref(ref, ignore_alt_text=False):
 
 def unfurl_refs(text, ignore_alt_text=False):
     """
-    Worst code ever written. this needs work
+    input : <@U096Q7CQM|someuser> has joined the channel
+    ouput : someuser has joined the channel
     """
-    if text and text.find('<') > -1:
-        end = 0
-        newtext = u""
-        while text.find('<') > -1:
-            # Prepend prefix
-            newtext += text[:text.find('<')]
-            text = text[text.find('<'):]
-            end = text.find('>')
-            if end == -1:
-                newtext += text
-                break
-            # Format thingabob
-            newtext += unfurl_ref(text[1:end], ignore_alt_text)
-            text = text[end+1:]
-        newtext += text
-        return newtext
+    # Find all strings enclosed by <>
+    #  - <https://example.com|example with spaces>
+    #  - <#C2147483705|#otherchannel>
+    #  - <@U2147483697|@othernick>
+    # Test patterns lives in ./_pytest/test_unfurl.py
+    matches = re.findall(r"(<[@#]?(?:[^<]*)>)", text)
+    for m in matches:
+        # Replace them with human readable strings
+        text = text.replace(m, unfurl_ref(m[1:-1], ignore_alt_text))
     return text
 
 
