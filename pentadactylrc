@@ -16,6 +16,7 @@ map <leader>p :open pinboard<CR>
 map <leader>w :open plex<CR>
 map <leader>st :set guioptions!=T<CR>
 map <leader>ss :set guioptions!=s<CR>
+map <leader>s :pintab<CR>
 
 " Smooth scroll setting
 set scrollsteps=1
