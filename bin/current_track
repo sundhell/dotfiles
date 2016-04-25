@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+
+
 ITUNES_TRACK=$(osascript <<EOF
 if appIsRunning("Spotify")
     tell app "Spotify" to get the name of the current track
@@ -10,6 +12,10 @@ on appIsRunning(appName)
     tell app "System Events" to (name of processes) contains appName
 end appIsRunning
 EOF)
+
+if test "x$ITUNES_TRACK" == "x"; then
+  ITUNES_TRACK=$(mpc current -f '%title%')
+fi
 
 if test "x$ITUNES_TRACK" != "x"; then
 ITUNES_ARTIST=$(osascript <<EOF
@@ -24,6 +30,11 @@ on appIsRunning(appName)
     tell app "System Events" to (name of processes) contains appName
 end appIsRunning
 EOF)
+
+
+if test "x$ITUNES_ARTIST" == "x"; then
+  ITUNES_ARTIST=$(mpc current -f '%artist%')
+fi
 
     echo '#[bg=colour137,fg=colour16,bold] ♫' $ITUNES_TRACK '#[nobold]by#[bold]' $ITUNES_ARTIST '#[fg=colour254,bg=colour137,nobold]'
 fi
