@@ -6,6 +6,7 @@ set hintchars=hjklasdfgyuiopqwertnmzxcvb
 set defsearch=duckduckgo
 set ignorecase
 set incsearch
+set statuslinevisibility=visible
 
 " Mappings
 map <leader>ta :tab addons<CR>
