@@ -52,7 +52,7 @@ Plug 'nono/vim-handlebars', { 'for': 'handlebars' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'tpope/vim-markdown'
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
