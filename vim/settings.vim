@@ -82,6 +82,15 @@ let g:pad#dir = '~/.vim-pad'
 " Markdown settings
 let g:markdown_fenced_languages = ['html', 'python', 'sh', 'php', 'ruby', 'json', 'javascript']
 
+
+"
+" ============== RELATIVE NUMBERS ==============
+"
+autocmd FocusLost * :set norelativenumber
+autocmd FocusGained * :set relativenumber
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
+
 "
 " ============== SNIPPETS ==============
 "
