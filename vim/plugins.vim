@@ -47,7 +47,7 @@ Plug 'Valloric/YouCompleteMe'
 
 " File type plugins
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'nono/vim-handlebars', { 'for': 'handlebars' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'dag/vim-fish', { 'for': 'fish' }
