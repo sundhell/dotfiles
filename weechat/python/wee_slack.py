@@ -853,6 +853,9 @@ class User(object):
         return [self.name, "@" + self.name, self.identifier]
 
     def set_active(self):
+        if self.deleted:
+            return
+
         self.presence = "active"
         for channel in self.server.channels:
             if channel.has_user(self.identifier):
@@ -863,6 +866,9 @@ class User(object):
             buffer_list_update_next()
 
     def set_inactive(self):
+        if self.deleted:
+            return
+
         self.presence = "away"
         for channel in self.server.channels:
             if channel.has_user(self.identifier):
@@ -946,18 +952,19 @@ class Message(object):
         if "reactions" in self.message_json:
             found = False
             for r in self.message_json["reactions"]:
-                if r["name"] == reaction:
-                    r["users"].add(user)
+                if r["name"] == reaction and user not in r["users"]:
+                    r["users"].append(user)
                     found = True
+
             if not found:
-                self.message_json["reactions"].append({u"name": reaction, u"users": {user}})
+                self.message_json["reactions"].append({u"name": reaction, u"users": [user]})
         else:
-            self.message_json["reactions"] = [{u"name": reaction, u"users": {user}}]
+            self.message_json["reactions"] = [{u"name": reaction, u"users": [user]}]
 
     def remove_reaction(self, reaction, user):
         if "reactions" in self.message_json:
             for r in self.message_json["reactions"]:
-                if r["name"] == reaction:
+                if r["name"] == reaction and user in r["users"]:
                     r["users"].remove(user)
         else:
             pass
