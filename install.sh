@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Clone git project and cd into the folder.
-git clone https://github.com/PatrikWestlund/dotfiles.git ~/.dotfiles
+git clone https://github.com/sundhell/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 
 # Go trough all the files available in this folder.
