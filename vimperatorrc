@@ -16,3 +16,5 @@ map <leader>tp :tab preferences!<CR>
 map <leader>ga :set gui=all<CR>
 map <leader>gn :set gui=notabs,nobookmarks,nomenu,nonavigation,noaddons<CR>
 map <leader>gt :set gui=nobookmarks,nomenu,nonavigation,tabs,noaddons<CR>
+
+map <leader>pt :set apptab!<CR>
