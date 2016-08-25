@@ -26,7 +26,6 @@ end
 
 fish_env_variables
 fish_user_abbreviations
-fish_vi_mode
 
 set fish_key_bindings fish_user_key_bindings
 
