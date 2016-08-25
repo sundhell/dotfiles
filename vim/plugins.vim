@@ -41,6 +41,7 @@ Plug 'axiom/vim-memcolo'
 Plug 'CycleColor'
 Plug 'gilgigilgil/anderson.vim'
 Plug 'morhetz/gruvbox'
+Plug 'alessandroyorba/sierra'
 
 " Snippets
 Plug 'SirVer/ultisnips'
