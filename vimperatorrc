@@ -3,10 +3,11 @@ let mapleader = ","
 " Settings
 set gui=noaddons,nobookmarks,nomenu,nonavigation,tabs
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
-set defsearch=duckduckgo
+set defsearch=google
 set ignorecase
 set incsearch
 set statuslinevisibility=visible
+set hintchars=asdfg;lkjh
 
 " Mappings
 map <leader>ta :tab addons<CR>
@@ -18,3 +19,6 @@ map <leader>gn :set gui=notabs,nobookmarks,nomenu,nonavigation,noaddons<CR>
 map <leader>gt :set gui=nobookmarks,nomenu,nonavigation,tabs,noaddons<CR>
 
 map <leader>pt :set apptab!<CR>
+
+map s :open google 
+map S :tabopen google 
