@@ -23,7 +23,6 @@ Plug 'fmoralesc/vim-pad'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 
 " File handling
-Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Rename'
 Plug 'tpope/vim-vinegar'

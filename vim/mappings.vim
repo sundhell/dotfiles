@@ -2,10 +2,9 @@
 " ============== MAPPINGS ==============
 "
 let mapleader = ","
-nmap <leader>f :CtrlP<cr>
-nmap <leader>b :CtrlPBuffer<cr>
-nmap <leader>m :CtrlPMRU<cr>
-nmap <leader>t :CtrlPBufTag<cr>
+nmap <leader>f :Files<cr>
+nmap <leader>b :Buffers<cr>
+nmap <leader>t :BTags<cr>
 nmap <leader>z :NERDTreeToggle<cr>
 nmap <leader>k :bd<cr>
 nmap <leader>r :VimuxRunCommand("clear; phpunit -v " . bufname("%"))<cr>
