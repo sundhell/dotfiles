@@ -21,6 +21,7 @@ Plug 'rking/ag.vim'
 Plug 'benekastah/neomake'
 Plug 'fmoralesc/vim-pad'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
+Plug 'joonty/vdebug'
 
 " File handling
 Plug 'scrooloose/nerdtree'
