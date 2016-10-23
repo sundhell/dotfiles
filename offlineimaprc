@@ -24,7 +24,8 @@ nametrans = lambda folder: {'inbox': 'INBOX',
                             'drafts': 'INBOX.Drafts',
                             'sent': 'INBOX.Sent Items',
                             'trash': 'INBOX.Trash',
-                            'spam': 'INBOX.Junk Mail',
+                            'junk': 'INBOX.Junk Mail',
+                            'spam': 'INBOX.Learn spam',
                               }.get(folder, folder)
 
 [Repository sundhall.se_remote]
@@ -40,7 +41,8 @@ nametrans = lambda folder: {'INBOX': 'inbox',
                             'INBOX.Drafts': 'drafts',
                             'INBOX.Sent Items': 'sent',
                             'INBOX.Trash': 'trash',
-                            'INBOX.Junk Mail': 'spam',
+                            'INBOX.Learn spam': 'spam',
+                            'INBOX.Junk Mail': 'junk',
                               }.get(folder, folder)
 idlefolders = ['INBOX']
 
