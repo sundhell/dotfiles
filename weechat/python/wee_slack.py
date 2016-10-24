@@ -674,7 +674,12 @@ class Channel(object):
                     name = prefix_same_nick
             else:
                 nick_prefix = w.config_string(w.config_get('weechat.look.nick_prefix'))
+                nick_prefix_color_name = w.config_string(w.config_get('weechat.color.chat_nick_prefix'))
+                nick_prefix_color = w.color(nick_prefix_color_name)
+
                 nick_suffix = w.config_string(w.config_get('weechat.look.nick_suffix'))
+                nick_suffix_color_name = w.config_string(w.config_get('weechat.color.chat_nick_prefix'))
+                nick_suffix_color = w.color(nick_suffix_color_name)
 
                 if self.server.users.find(user):
                     name = self.server.users.find(user).formatted_name()
@@ -683,7 +688,7 @@ class Channel(object):
                 else:
                     name = user
                     self.last_active_user = None
-                name = nick_prefix + name + nick_suffix
+                name = nick_prefix_color + nick_prefix + w.color("reset") + name + nick_suffix_color + nick_suffix + w.color("reset")
             name = name.decode('utf-8')
             # colorize nicks in each line
             chat_color = w.config_string(w.config_get('weechat.color.chat'))
@@ -1301,6 +1306,35 @@ def command_markread(current_buffer, args):
     domain = current_domain_name()
     if servers.find(domain).channels.find(channel):
         servers.find(domain).channels.find(channel).mark_read()
+
+
+@slack_buffer_required
+def command_slash(current_buffer, args):
+    """
+    Support for custom slack commands
+    /slack slash /customcommand arg1 arg2 arg3
+    """
+
+    server = servers.find(current_domain_name())
+    channel = current_buffer_name(short=True)
+    domain = current_domain_name()
+
+    if args is None:
+        server.buffer_prnt("Usage: /slack slash /someslashcommand [arguments...].")
+        return
+
+    split_args = args.split(None, 1)
+
+    command = split_args[0]
+    text = split_args[1] if len(split_args) > 1 else ""
+
+    if servers.find(domain).channels.find(channel):
+        channel_identifier = servers.find(domain).channels.find(channel).identifier
+
+    if channel_identifier:
+        async_slack_api_request(server.domain, server.token, 'chat.command', {'command': command, 'text': text, 'channel': channel_identifier})
+    else:
+        server.buffer_prnt("User or channel not found.")
 
 
 def command_flushcache(current_buffer, args):
