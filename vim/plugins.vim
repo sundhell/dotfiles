@@ -19,7 +19,6 @@ Plug 'gcmt/wildfire.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'rking/ag.vim'
 Plug 'benekastah/neomake'
-Plug 'fmoralesc/vim-pad'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'joonty/vdebug'
 

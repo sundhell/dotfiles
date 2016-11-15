@@ -12,7 +12,7 @@ nmap <leader>R :VimuxRunCommand("clear; phpunit -v ")<cr>
 nmap <leader>p :Pandoc! html -c ~/.pandoc_templates/github-pandoc.css<cr>
 nmap <space> :noh<cr>
 nmap <Leader>c :set cursorline! cursorcolumn!<cr>
-nmap <Leader>m :NERDTreeToggle<cr>
+nmap <Leader>n :NERDTreeToggle<cr>
 nmap <Leader>g :NERDTreeFind<cr>
 
 " Disable arrow keys
