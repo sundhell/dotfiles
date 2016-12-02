@@ -1,6 +1,7 @@
 [user]
 	name = Patrik Sundhäll
 	email = patrik@sundhall.se
+	signingkey = BB7DD34A7B1379A8
 [diff]
 	tool = vimdiff
 [color]
