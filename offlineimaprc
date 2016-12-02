@@ -6,11 +6,13 @@ pythonfile = ~/.offlineimap/keychain.py
 localrepository = sundhall.se_local
 remoterepository = sundhall.se_remote
 autorefresh = 1
+postsynchook = notmuch new
 
 [Account smspark.se]
 localrepository = local_smspark.se
 remoterepository = remote_smspark.se
 autorefresh = 1
+postsynchook = notmuch new
 
 synclabels = yes
 labelsheader = X-Label
