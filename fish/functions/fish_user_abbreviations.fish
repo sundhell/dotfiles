@@ -23,7 +23,7 @@ function fish_user_abbreviations
     abbr -a rflush='redis-cli flushall'
     abbr -a mflush='echo"flush_all" | nc localhost 11211'
 
-    abbr -a bu='brew update; brew cask update; brew upgrade; brew cleanup; brew cask cleanup'
+    abbr -a bu='brew update; brew upgrade; brew cleanup'
 
     abbr -a vha='vagrant global-status | awk "/running/{print $1}" | xargs -n 1 -- vagrant halt'
     abbr -a vsa='vagrant global-status | awk "/running/{print $1}" | xargs -n 1 -- vagrant up'
