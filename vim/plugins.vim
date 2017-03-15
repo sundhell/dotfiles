@@ -60,6 +60,7 @@ Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
 Plug 'markcornick/vim-vagrant', { 'for': 'vagrant' }
+Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tobyS/pdv'
 Plug 'kylef/apiblueprint.vim'
