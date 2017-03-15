@@ -24,6 +24,10 @@ if which composer >/dev/null ^&1
   set PATH $HOME/.composer/vendor/bin $PATH
 end
 
+if which rust >/dev/null ^&1
+  set PATH $HOME/.cargo/bin $PATH
+end
+
 fish_env_variables
 fish_user_abbreviations
 
