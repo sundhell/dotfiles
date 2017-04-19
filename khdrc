@@ -1,0 +1,6 @@
+ctrl + alt - 0x2F : mpc next
+ctrl + alt - 0x2B : mpc prev
+ctrl + alt - 0x23 : mpc toggle
+
+lcmd -> : /Users/patrik/bin/xkbswitch -se US
+rcmd -> : /Users/patrik/bin/xkbswitch -se Swedish-Pro
