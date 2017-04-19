@@ -67,5 +67,6 @@ Plug 'tobyS/pdv'
 Plug 'kylef/apiblueprint.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'uarun/vim-protobuf'
 
 call plug#end()
