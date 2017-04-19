@@ -1,6 +1,7 @@
 [general]
-accounts = sundhall.se
+accounts = sundhall.se,smspark.se
 pythonfile = ~/.offlineimap/keychain.py
+maxsyncaccounts = 2
 
 [Account sundhall.se]
 localrepository = sundhall.se_local
