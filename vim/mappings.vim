@@ -20,9 +20,3 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
-
-" Navigate between splits
-nmap <silent> <c-k> :wincmd k<cr>
-nmap <silent> <c-j> :wincmd j<cr>
-nmap <silent> <c-h> :wincmd h<cr>
-nmap <silent> <c-l> :wincmd l<cr>
