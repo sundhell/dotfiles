@@ -24,6 +24,7 @@ Plug 'joonty/vdebug'
 
 " File handling
 Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 Plug 'Rename'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
