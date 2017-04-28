@@ -14,6 +14,7 @@ nmap <space> :noh<cr>
 nmap <Leader>c :set cursorline! cursorcolumn!<cr>
 nmap <Leader>n :NERDTreeToggle<cr>
 nmap <Leader>g :NERDTreeFind<cr>
+nmap <Leader>s :Ack<space>
 
 " Disable arrow keys
 map <up> <nop>
