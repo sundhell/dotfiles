@@ -168,6 +168,13 @@ endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
+"
+" ============== ACK/AG ==============
+"
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 " ============== FILETYPES ==============
 "
 au BufNewFile,BufRead *.ejs         set filetype=js
