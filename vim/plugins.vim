@@ -71,5 +71,6 @@ Plug 'junegunn/limelight.vim'
 Plug 'uarun/vim-protobuf'
 Plug 'vim-scripts/SQLUtilities'
 Plug 'vim-scripts/Align'
+Plug 'vimperator/vimperator.vim'
 
 call plug#end()
