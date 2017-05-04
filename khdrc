@@ -1,6 +1,14 @@
+# Media player controls
 ctrl + alt - 0x2F : mpc next
 ctrl + alt - 0x2B : mpc prev
 ctrl + alt - 0x23 : mpc toggle
 
-lcmd -> : /Users/patrik/bin/xkbswitch -se US
-rcmd -> : /Users/patrik/bin/xkbswitch -se Swedish-Pro
+# Switch keyboard layout with cmd buttons
+lcmd : /Users/patrik/bin/xkbswitch -se US
+rcmd : /Users/patrik/bin/xkbswitch -se Swedish-Pro
+
+# Map single press on ctrl to espace
+lctrl : khd -p "- escape"
+
+# Set trigger timeout to 200ms
+khd mod_trigger_timeout 0.2
