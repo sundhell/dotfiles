@@ -69,5 +69,7 @@ Plug 'kylef/apiblueprint.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'uarun/vim-protobuf'
+Plug 'vim-scripts/SQLUtilities'
+Plug 'vim-scripts/Align'
 
 call plug#end()
