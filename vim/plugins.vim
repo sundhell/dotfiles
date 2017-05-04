@@ -21,6 +21,7 @@ Plug 'mileszs/ack.vim'
 Plug 'benekastah/neomake'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'joonty/vdebug'
+Plug 'alvan/vim-closetag'
 
 " File handling
 Plug 'scrooloose/nerdtree'
