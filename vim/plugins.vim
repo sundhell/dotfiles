@@ -72,5 +72,6 @@ Plug 'uarun/vim-protobuf'
 Plug 'vim-scripts/SQLUtilities'
 Plug 'vim-scripts/Align'
 Plug 'vimperator/vimperator.vim'
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
