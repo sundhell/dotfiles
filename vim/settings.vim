@@ -71,6 +71,9 @@ endif
 " Close vim if NERDTree is the only buffer still open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" Settings for netrw
+let g:netrw_liststyle = 3
+
 " Undo history
 set backup
 set undofile
