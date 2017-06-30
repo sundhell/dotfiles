@@ -42,24 +42,24 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: InconsolataForPowerline Nerd Font
+    family: FuraCode Nerd Font
     # Style can be specified to pick a specific face.
-    # style: Regular
+    style: Light
 
   # The bold font face
   bold:
-    family: InconsolataForPowerline Nerd Font
+    family: FuraCode Nerd Font
     # Style can be specified to pick a specific face.
-    # style: Bold
+    style: Medium
 
   # The italic font face
   italic:
-    family: InconsolataForPowerline Nerd Font
+    family: FuraCode Nerd Font
     # Style can be specified to pick a specific face.
     # style: Italic
 
   # Point size of the font
-  size: 13.0
+  size: 12.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -86,11 +86,10 @@ render_timer: false
 # and cursor.background colors, otherwise invert the colors of the cursor.
 custom_cursor_colors: false
 
-# Colors (anderson)
 colors:
   # Default colors
   primary:
-    background: '0x363432'
+    background: '0x292726'
     foreground: '0xc5beba'
 
   # Normal colors
@@ -102,19 +101,18 @@ colors:
     blue:    '0x628b97'
     magenta: '0xc8a196'
     cyan:    '0x88a2a4'
-    white:   '0xc6beba'
+    white:   '0x706a67'
 
   # Bright colors
   bright:
-    black:   '0x514b47'
+    black:   '0x706a67'
     red:     '0xf0a4af'
     green:   '0x9ad1bc'
     yellow:  '0xc4c18b'
     blue:    '0xbad4f5'
     magenta: '0xe7c6be'
     cyan:    '0xa7c1c5'
-    white:   '0xe4e4e4'
-
+    white:   '0xc5beba'
 
 # Visual Bell
 #
