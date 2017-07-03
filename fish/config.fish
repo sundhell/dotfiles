@@ -24,7 +24,7 @@ if which composer >/dev/null ^&1
   set PATH $HOME/.composer/vendor/bin $PATH
 end
 
-if which rust >/dev/null ^&1
+if test -d $HOME/.cargo/bin
   set PATH $HOME/.cargo/bin $PATH
 end
 
