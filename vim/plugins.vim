@@ -43,6 +43,7 @@ Plug 'CycleColor'
 Plug 'gilgigilgil/anderson.vim'
 Plug 'morhetz/gruvbox'
 Plug 'alessandroyorba/sierra'
+Plug 'dylanaraps/wal.vim'
 
 " Snippets
 Plug 'SirVer/ultisnips'
