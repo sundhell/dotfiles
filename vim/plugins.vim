@@ -26,7 +26,7 @@ Plug 'alvan/vim-closetag'
 " File handling
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-Plug 'Rename'
+Plug 'danro/rename.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -39,7 +39,7 @@ Plug 'mattn/webapi-vim'
 
 " Color scheme plugins
 Plug 'axiom/vim-memcolo'
-Plug 'CycleColor'
+Plug 'vim-scripts/CycleColor'
 Plug 'gilgigilgil/anderson.vim'
 Plug 'morhetz/gruvbox'
 Plug 'alessandroyorba/sierra'
