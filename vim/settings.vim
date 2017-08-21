@@ -40,6 +40,8 @@ set timeoutlen=300    " Faster mappings
 set t_Co=256          " 256 colors
 set laststatus=2      " Always show statusline
 set scrolloff=10      " Center current line vertically
+set modeline
+set modelines=5
 
 " Eyecandy
 syntax on
