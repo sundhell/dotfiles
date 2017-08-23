@@ -7,13 +7,13 @@ maxsyncaccounts = 2
 localrepository = sundhall.se_local
 remoterepository = sundhall.se_remote
 autorefresh = 1
-postsynchook = notmuch new
+postsynchook = ionice -c 3 chrt --idle 0 /bin/sh -c "notmuch new && afew --tag --new"
 
 [Account smspark.se]
 localrepository = local_smspark.se
 remoterepository = remote_smspark.se
 autorefresh = 1
-postsynchook = notmuch new
+postsynchook = ionice -c 3 chrt --idle 0 /bin/sh -c "notmuch new && afew --tag --new"
 
 synclabels = yes
 labelsheader = X-Label

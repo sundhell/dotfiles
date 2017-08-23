@@ -1,5 +1,5 @@
 [SpamFilter]
-[ClassifyingFilter]
+[FolderNameFilter]
 [KillThreadsFilter]
 [ListMailsFilter]
 [ArchiveSentMailsFilter]
