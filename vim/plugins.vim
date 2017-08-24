@@ -22,6 +22,7 @@ Plug 'benekastah/neomake'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'joonty/vdebug'
 Plug 'alvan/vim-closetag'
+Plug 'sbdchd/neoformat'
 
 " File handling
 Plug 'scrooloose/nerdtree'
