@@ -8,41 +8,33 @@
 ;=====================================================
 
 [colors]
-background = ${xrdb:color2:#222}
+background = #242529
 background-alt = #444
-foreground = ${xrdb:color7:#222}
+foreground = #F2F3F5
 foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
+
 [bar/bar]
-monitor = ${env:MONITOR:VGA-1}
+monitor = ${env:MONITOR:eDP1}
+height = 24
 
-width = 70%
-height = 17
-offset-x = 15%
-offset-y = 2
-
-padding-right = 1
+padding-right = 0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-font-0 = "Inconsolata Nerd Font:pixelsize=9;2"
-font-1 = "FontAwesome:pixelsize=9;2"
+font-0 = "Inconsolata Nerd Font:pixelsize=14;2"
+font-1 = "FontAwesome:pixelsize=14;2"
 
-line-size = 2
-line-color = #f00
-
-module-margin-left = 1
+module-margin-left = 2
 module-margin-right = 1
 
 modules-left = i3
 modules-center =
-modules-right = keyboard cpu volume battery vpncheck date
-
-override-redirect = true
+modules-right = wifi vpncheck backlight keyboard pavolume battery date
 
 
 [module/i3]
@@ -51,38 +43,20 @@ type = internal/i3
 format = <label-state> <label-mode>
 
 label-focused = %index%
-label-focused-foreground = #ffffff
-label-focused-background = #3f3f3f
-label-focused-underline = #fba922
+label-focused-foreground = #242529
+label-focused-background = #FB546E
 label-focused-padding = 1
 
 label-unfocused = %index%
 label-unfocused-padding = 1
 
 label-visible = %index%
-label-visible-underline = #555555
 label-visible-padding = 1
 
 label-urgent = %index%
 label-urgent-foreground = #000000
 label-urgent-background = #bd2c40
 label-urgent-padding = 1
-
-
-[module/volume]
-type = internal/volume
-
-master-soundcard = default
-master-mixer = Master
-
-format-volume = <label-volume> <ramp-volume>
-
-label-muted = muted
-label-muted-foreground = #66
-
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
 
 
 [module/battery]
@@ -93,9 +67,12 @@ adapter = AC
 
 poll-interval = 5
 
-format-charging = <label-charging> <animation-charging>
-format-discharging = <label-discharging> <ramp-capacity>
-format-full = <label-full> <ramp-capacity>
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+
+
+label-discharging = %percentage%%  (%consumption%w)
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -115,21 +92,7 @@ animation-charging-framerate = 750
 [module/keyboard]
 type = internal/xkeyboard
 
-blacklist-0 = num lock
-blacklist-1 = scroll lock
-
-format = <label-layout> <label-indicator>
-format-spacing = 0
-
-label-indicator-padding = 2
-label-indicator-background = #8139e8
-
-
-[module/cpu]
-type = internal/cpu
-format = <label>
-
-label = CPU %percentage%%
+format = ⌨ <label-layout>
 
 
 [module/date]
@@ -140,13 +103,35 @@ interval = 1.0
 date = %Y-%m-%d
 time = %H:%M
 
-label = %date% %time%
+date-alt = %A, %d %B %Y
+time-alt = %H:%M:%S
 
-[module/bluetooth]
-type = custom/script
-interval = 5
+format = <label>
 
-exec = ~/.config/polybar/bluetooth.sh
+label =  %date% %time%
+label-foreground = #242529
+label-background = #FB546E
+label-padding = 1
+
+
+[module/wifi]
+type = internal/network
+
+interface = wlp2s0
+
+label-connected =   %essid%
+label-connected-padding-left = 1
+label-disconnected =  not connected
+label-disconnected-padding-left = 1
+label-disconnected-foreground = #66ffffff
+
+
+[module/backlight]
+type = internal/xbacklight
+
+format = <label>
+
+label =  %percentage%%
 
 
 [module/vpncheck]
@@ -159,10 +144,17 @@ format-prefix = " "
 format-prefix-foreground = #5b
 
 
+[module/pavolume]
+type = custom/script
+tail = true
+label = %output%
+exec = ~/.config/polybar/pavolume.sh --listen
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/pavolume.sh --up
+scroll-down = ~/.config/polybar/pavolume.sh --down
+
 [settings]
 screenchange-reload = true
 
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
+; vim:ft=dosini
