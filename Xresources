@@ -1,7 +1,30 @@
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-ext-common: default,matcher,url-select,resize-font
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.underline: true
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
-URxvt*transparent: true
-URxvt*shading: 12
 URxvt*scrollBar: false
+
+URxvt.font: xft:Inconsolata Nerd Font:size=13:antialias=true
+
+*foreground: #c5beba
+*background: #363432
+*color0: #363432
+*color1: #be503e
+*color2: #7bb292
+*color3: #d7ae38
+*color4: #628b97
+*color5: #c7a095
+*color6: #88a2a4
+*color7: #837d7a
+*color8: #645d59
+*color9: #f0a4af
+*color10: #9ad1bc
+*color11: #c4c18b
+*color12: #bad4f5
+*color13: #e7c6be
+*color14: #a8c1c5
+*color15: #c5beba
