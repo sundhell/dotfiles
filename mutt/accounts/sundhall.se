@@ -2,7 +2,7 @@
 # sundhall.se ---------------------------------
 
 set from      = "patrik@sundhall.se"
-set sendmail  = "/usr/local/bin/msmtp -a sundhall.se"
+set sendmail  = "/usr/bin/msmtp -a sundhall.se"
 set mbox      = "+sundhall.se/archive"
 set postponed = "+sundhall.se/drafts"
 set record    = "+sundhall.se/sent"
