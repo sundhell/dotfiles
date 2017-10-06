@@ -7,7 +7,7 @@ nmap <leader>b :Buffers<cr>
 nmap <leader>t :BTags<cr>
 nmap <leader>z :NERDTreeToggle<cr>
 nmap <leader>k :bd<cr>
-nmap <leader>p :Pandoc! html -c ~/.pandoc_templates/github-pandoc.css<cr>
+nmap <leader>p :Pandoc! html -c ~/.pandoc/templates/github-pandoc.css<cr>
 nmap <space> :noh<cr>
 nmap <Leader>c :set cursorline! cursorcolumn!<cr>
 nmap <Leader>n :NERDTreeToggle<cr>
