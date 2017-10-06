@@ -170,14 +170,48 @@ client.placeholder      $bg     $bg     $fg  $bg       $bg
 
 client.background $bg
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#         status_command i3status
-# }
 
-gaps inner 10
-gaps outer 15
+######################
+# Custom keybindings #
+######################
+
+# Audio keys
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(/home/patrik/bin/get_current_sink) +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(/home/patrik/bin/get_current_sink) -5%
+bindsym XF86AudioMute exec pactl set-sink-mute $(/home/patrik/bin/get_current_sink) toggle
+
+# Brightness keys
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+
+# Media keys
+bindsym XF86AudioPlay exec --no-startup-id /home/patrik/bin/playerctl toggle
+bindsym XF86AudioNext exec --no-startup-id /home/patrik/bin/playerctl next
+bindsym XF86AudioPrev exec --no-startup-id /home/patrik/bin/playerctl prev
+
+# Lock key
+bindsym $mod+Ctrl+l exec /home/patrik/bin/lock
+
+# Change wallpaper
+bindsym $mod+Ctrl+w exec feh --randomize --bg-scale ~/.wallpapers/
+
+
+########################
+# Settings for I3-gaps #
+########################
+
+gaps inner 5
+gaps outer 7
+
+
+#######################
+# Autostarting script #
+#######################
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id wal -i $HOME/.wallpapers -o wal-set
+exec_always --no-startup-id feh --randomize --bg-scale ~/.wallpapers/
+exec_always --no-startup-id xautolock -time 5 -locker "/home/patrik/bin/lock"
+exec_always --no-startup-id dunst
+exec_always --no-startup-id compton -b --xrender-sync-fence --xrender-sync
+
+# vim:ft=dosini
