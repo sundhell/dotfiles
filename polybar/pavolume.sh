@@ -152,7 +152,7 @@ function output() {
     then
       echo " $curVol%"
     else
-      if [ "${active_sink}" = '1' ]
+      if [ "${active_sink}" -ge '1' ]
       then
         echo " $curVol%"
       else
