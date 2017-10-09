@@ -33,7 +33,7 @@ module-margin-left = 2
 module-margin-right = 1
 
 modules-left = i3
-modules-center =
+modules-center = mpd
 modules-right = wifi vpncheck backlight keyboard pavolume battery date
 
 
@@ -153,6 +153,15 @@ click-right = exec pavucontrol
 click-left = ~/.config/polybar/pavolume.sh --togmute
 scroll-up = ~/.config/polybar/pavolume.sh --up
 scroll-down = ~/.config/polybar/pavolume.sh --down
+
+
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+password =
+
 
 [settings]
 screenchange-reload = true
