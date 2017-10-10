@@ -162,6 +162,8 @@ host = 127.0.0.1
 port = 6600
 password =
 
+label-song = ♫ %artist% - %title%
+
 
 [settings]
 screenchange-reload = true
