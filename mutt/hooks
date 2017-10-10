@@ -2,7 +2,7 @@
 # Hooks ---------------------------------
 
 folder-hook sundhall.se/* source ~/.mutt/accounts/sundhall.se
-folder-hook smspark.se/* source ~/.mutt/accounts/smspark.se
+folder-hook evolvetechnology.se/* source ~/.mutt/accounts/evolvetechnology.se
 
 # Set default account
 set spoolfile = "+sundhall.se/inbox"
