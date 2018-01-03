@@ -15,7 +15,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:Roboto 19
 
-for_window [class=".*"] border pixel 1
+for_window [class=".*"] border pixel 0
 hide_edge_borders both
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -200,8 +200,8 @@ bindsym $mod+Ctrl+w exec feh --randomize --bg-scale ~/.wallpapers/
 # Settings for I3-gaps #
 ########################
 
-gaps inner 5
-gaps outer 7
+gaps inner 23
+gaps outer 0
 
 
 #######################
