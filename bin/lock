@@ -1,6 +1,6 @@
 #!/bin/bash
 # All options are here: http://www.imagemagick.org/Usage/blur/#blur_args
-BLURTYPE="0x5"
+BLURTYPE="0x9"
 #BLURTYPE="0x2"
 #BLURTYPE="5x3"
 #BLURTYPE="2x8"
