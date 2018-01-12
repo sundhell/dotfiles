@@ -35,6 +35,7 @@ end
 
 fish_env_variables
 fish_user_abbreviations
+dotenv
 
 set fish_key_bindings fish_user_key_bindings
 
