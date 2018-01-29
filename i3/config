@@ -190,7 +190,7 @@ bindsym XF86AudioNext exec --no-startup-id /home/patrik/bin/playerctl next
 bindsym XF86AudioPrev exec --no-startup-id /home/patrik/bin/playerctl prev
 
 # Lock key
-bindsym $mod+Ctrl+l exec /home/patrik/bin/lock
+bindsym $mod+Ctrl+l exec /home/patrik/bin/betterlockscreen -l dimblur
 
 # Change wallpaper
 bindsym $mod+Ctrl+w exec feh --randomize --bg-scale ~/.wallpapers/
@@ -210,7 +210,7 @@ gaps outer 0
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id feh --randomize --bg-scale ~/.wallpapers/
-exec_always --no-startup-id xautolock -time 5 -locker "/home/patrik/bin/lock"
+exec_always --no-startup-id xautolock -time 5 -locker "/home/patrik/bin/betterlockscreen -l dimblur"
 exec_always --no-startup-id dunst
 exec_always --no-startup-id compton -b --xrender-sync-fence --xrender-sync
 
