@@ -176,8 +176,8 @@ client.background $bg
 ######################
 
 # Audio keys
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(/home/patrik/bin/get_current_sink) +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(/home/patrik/bin/get_current_sink) -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(/home/patrik/bin/get_current_sink) +2%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(/home/patrik/bin/get_current_sink) -2%
 bindsym XF86AudioMute exec pactl set-sink-mute $(/home/patrik/bin/get_current_sink) toggle
 
 # Brightness keys
