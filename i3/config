@@ -214,5 +214,6 @@ exec_always --no-startup-id xautolock -time 5 -locker "/home/patrik/bin/betterlo
 exec_always --no-startup-id dunst
 exec_always --no-startup-id compton -b --xrender-sync-fence --xrender-sync
 exec_always --no-startup-id setxkbmap -option "grp:alt_shift_toggle,caps:ctrl_modifier" us,se
+exec --no-startup-id redshift
 
 # vim:ft=dosini
