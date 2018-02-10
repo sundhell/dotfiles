@@ -6,6 +6,7 @@ from collections import OrderedDict
 from functools import wraps
 from itertools import islice
 
+import textwrap
 import time
 import json
 import pickle
@@ -195,7 +196,6 @@ def get_nick_color_name(nick):
 ##### BEGIN NEW
 
 IGNORED_EVENTS = [
-    "hello",
     # "pref_change",
     # "reconnect_url",
 ]
@@ -827,7 +827,7 @@ def nick_completion_cb(data, completion_item, current_buffer, completion):
     for m in current_channel.members:
         u = current_channel.team.users.get(m, None)
         if u:
-            w.hook_completion_list_add(completion, "@" + u.slack_name, 1, w.WEECHAT_LIST_POS_SORT)
+            w.hook_completion_list_add(completion, "@" + u.name, 1, w.WEECHAT_LIST_POS_SORT)
     return w.WEECHAT_RC_OK
 
 
@@ -886,7 +886,7 @@ def complete_next_cb(data, current_buffer, command):
 
     for m in current_channel.members:
         u = current_channel.team.users.get(m, None)
-        if u and u.slack_name == word:
+        if u and u.name == word:
             # Here, we cheat.  Insert a @ in front and rely in the @
             # nicks being in the completion list
             w.buffer_set(current_buffer, "input", line_input[:word_start] + "@" + line_input[word_start:])
@@ -1060,7 +1060,7 @@ class SlackTeam(object):
         return {v.slack_name: k for k, v in self.channels.iteritems()}
 
     def get_username_map(self):
-        return {v.slack_name: k for k, v in self.users.iteritems()}
+        return {v.name: k for k, v in self.users.iteritems()}
 
     def get_team_hash(self):
         return self.team_hash
@@ -1108,7 +1108,7 @@ class SlackTeam(object):
                 # The fast reconnect failed, so start over-ish
                 for chan in self.channels:
                     self.channels[chan].got_history = False
-                s = SlackRequest(self.token, 'rtm.start', {}, retries=999)
+                s = initiate_connection(self.token, retries=999)
                 self.eventrouter.receive(s)
                 self.connecting = False
                 # del self.eventrouter.teams[self.get_team_hash()]
@@ -1151,6 +1151,16 @@ class SlackTeam(object):
             if user.id in c.members:
                 c.update_nicklist(user.id)
 
+    def subscribe_users_presence(self):
+        # FIXME: There is a limitation in the API to the size of the
+        # json we can send.
+        # We should try to be smarter to fetch the users whom we want to
+        # subscribe to.
+        users = self.users.keys()[0:750]
+        self.send_to_websocket({
+            "type": "presence_sub",
+            "ids": users,
+            }, expect_reply=False)
 
 class SlackChannel(object):
     """
@@ -1546,7 +1556,7 @@ class SlackChannel(object):
 
         if user and len(self.members) < 1000:
             user = self.team.users[user]
-            nick = w.nicklist_search_nick(self.channel_buffer, "", user.slack_name)
+            nick = w.nicklist_search_nick(self.channel_buffer, "", user.name)
             # since this is a change just remove it regardless of where it is
             w.nicklist_remove_nick(self.channel_buffer, nick)
             # now add it back in to whichever..
@@ -1894,13 +1904,20 @@ class SlackUser(object):
     """
 
     def __init__(self, **kwargs):
-        # We require these two things for a vaid object,
+        # We require these two things for a valid object,
         # the rest we can just learn from slack
         self.identifier = kwargs["id"]
-        self.slack_name = kwargs["name"]
-        self.name = kwargs["name"]
+        self.profile = {}  # in case it's not in kwargs
         for key, value in kwargs.items():
             setattr(self, key, value)
+
+        if self.profile.get("display_name"):
+            self.slack_name = self.profile["display_name"]
+            self.name = self.profile["display_name"].replace(' ', '')
+        else:
+            # No display name set. Fall back to the deprecated username field.
+            self.slack_name = kwargs["name"]
+            self.name = self.slack_name
         self.update_color()
 
     def __repr__(self):
@@ -2234,6 +2251,8 @@ def handle_history(message_json, eventrouter, **kwargs):
 
 ###### New/converted process_ and subprocess_ methods
 
+def process_hello(message_json, eventrouter, **kwargs):
+    kwargs['team'].subscribe_users_presence()
 
 def process_reconnect_url(message_json, eventrouter, **kwargs):
     kwargs['team'].set_reconnect_url(message_json['url'])
@@ -2245,9 +2264,15 @@ def process_manual_presence_change(message_json, eventrouter, **kwargs):
 
 def process_presence_change(message_json, eventrouter, **kwargs):
     if "user" in kwargs:
+        # TODO: remove once it's stable
         user = kwargs["user"]
         team = kwargs["team"]
         team.update_member_presence(user, message_json["presence"])
+    if "users" in message_json:
+        team = kwargs["team"]
+        for user_id in message_json["users"]:
+            user = team.users[user_id]
+            team.update_member_presence(user, message_json["presence"])
 
 
 def process_pref_change(message_json, eventrouter, **kwargs):
@@ -2992,6 +3017,52 @@ def me_command_cb(data, current_buffer, args):
     return w.WEECHAT_RC_OK_EAT
 
 
+def command_register(data, current_buffer, args):
+    CLIENT_ID = "2468770254.51917335286"
+    CLIENT_SECRET = "dcb7fe380a000cba0cca3169a5fe8d70"  # Not really a secret.
+    if args == 'register':
+        message = textwrap.dedent("""
+            #### Retrieving a Slack token via OAUTH ####
+
+            1) Paste this into a browser: https://slack.com/oauth/authorize?client_id=2468770254.51917335286&scope=client
+            2) Select the team you wish to access from wee-slack in your browser.
+            3) Click "Authorize" in the browser **IMPORTANT: the redirect will fail, this is expected**
+            4) Copy the "code" portion of the URL to your clipboard
+            5) Return to weechat and run `/slack register [code]`
+        """)
+        w.prnt("", message)
+        return
+
+    try:
+        _, oauth_code = args.split()
+    except ValueError:
+        w.prnt("",
+               "ERROR: wrong number of arguments given for register command")
+        return
+
+    uri = (
+        "https://slack.com/api/oauth.access?"
+        "client_id={}&client_secret={}&code={}"
+    ).format(CLIENT_ID, CLIENT_SECRET, oauth_code)
+    ret = urllib.urlopen(uri).read()
+    d = json.loads(ret)
+    if not d["ok"]:
+        w.prnt("",
+            "ERROR: Couldn't get Slack OAuth token: {}".format(d['error']))
+        return
+
+    if config.is_default('slack_api_token'):
+        w.config_set_plugin('slack_api_token', d['access_token'])
+    else:
+        # Add new token to existing set, joined by comma.
+        tok = config.get_string('slack_api_token')
+        w.config_set_plugin('slack_api_token',
+                            ','.join([tok, d['access_token']]))
+
+    w.prnt("", "Success! Added team \"%s\"" % (d['team_name'],))
+    w.prnt("", "Please reload wee-slack with: /script reload slack")
+
+
 @slack_buffer_or_ignore
 @utf8_decode
 def msg_command_cb(data, current_buffer, args):
@@ -3639,6 +3710,10 @@ class PluginConfig(object):
     def get_int(self, key):
         return int(w.config_get_plugin(key))
 
+    def is_default(self, key):
+        default = self.default_settings.get(key).default
+        return w.config_get_plugin(key) == default
+
     get_debug_level = get_int
     get_group_name_prefix = get_string
     get_map_underline_to = get_string
@@ -3705,6 +3780,11 @@ def trace_calls(frame, event, arg):
     f.flush()
     return
 
+def initiate_connection(token, retries=3):
+    return SlackRequest(token,
+            'rtm.start',
+            {"batch_presence_aware": 1 },
+            retries=retries)
 
 # Main
 if __name__ == "__main__":
@@ -3751,7 +3831,7 @@ if __name__ == "__main__":
 
             tokens = config.slack_api_token.split(',')
             for t in tokens:
-                s = SlackRequest(t, 'rtm.start', {})
+                s = initiate_connection(t)
                 EVENTROUTER.receive(s)
             if config.record_events:
                 EVENTROUTER.record()
