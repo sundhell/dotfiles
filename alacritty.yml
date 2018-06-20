@@ -42,24 +42,24 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Hasklug Nerd Font
+    family: Iosevka Term
     # Style can be specified to pick a specific face.
     style: Regular
 
   # The bold font face
   bold:
-    family: Hasklug Nerd Font
+    family: Iosevka Term
     # Style can be specified to pick a specific face.
-    style: Semibold
+    style: Bold
 
   # The italic font face
   italic:
-    family: Hasklug Nerd Font
+    family: Iosevka Term
     # Style can be specified to pick a specific face.
     style: Italic
 
   # Point size of the font
-  size: 12.0
+  size: 10.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -89,19 +89,19 @@ custom_cursor_colors: false
 colors:
   # Default colors
   primary:
-    background: '0x292726'
+    background: '0x363432'
     foreground: '0xc5beba'
 
   # Normal colors
   normal:
-    black:   '0x292726'
-    red:     '0xbd4f3e'
+    black:   '0x363432'
+    red:     '0xbe503e'
     green:   '0x7bb292'
     yellow:  '0xd7ae38'
     blue:    '0x628b97'
-    magenta: '0xc8a196'
+    magenta: '0xc7a095'
     cyan:    '0x88a2a4'
-    white:   '0x706a67'
+    white:   '0x837d7a'
 
   # Bright colors
   bright:
@@ -111,7 +111,7 @@ colors:
     yellow:  '0xc4c18b'
     blue:    '0xbad4f5'
     magenta: '0xe7c6be'
-    cyan:    '0xa7c1c5'
+    cyan:    '0xa8c1c5'
     white:   '0xc5beba'
 
 # Visual Bell
