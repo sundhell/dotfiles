@@ -223,9 +223,9 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 # Media keys
-bindsym XF86AudioPlay exec --no-startup-id /home/patrik/bin/playerctl toggle
-bindsym XF86AudioNext exec --no-startup-id /home/patrik/bin/playerctl next
-bindsym XF86AudioPrev exec --no-startup-id /home/patrik/bin/playerctl prev
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Lock key
 bindsym $mod+Ctrl+l exec /home/patrik/bin/betterlockscreen -l dimblur
