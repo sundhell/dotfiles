@@ -8,7 +8,7 @@ URxvt.iso14755_52: false
 
 URxvt*scrollBar: false
 
-URxvt.font: xft:Inconsolata Nerd Font:size=13:antialias=true
+URxvt.font: xft:Iosevka Term:size=10:style=regular
 URxvt.internalBorder: 10
 
 *foreground: #c5beba
