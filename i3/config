@@ -45,6 +45,7 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec rofi -show drun
+bindsym $mod+p exec rofi-pass
 
 # change focus
 bindsym $mod+j focus left
