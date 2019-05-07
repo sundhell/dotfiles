@@ -8,33 +8,106 @@
 ;=====================================================
 
 [colors]
-background = #242529
-background-alt = #444
-foreground = #F2F3F5
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+orange = #d79921
+darkgray = #8a8a8a
+white = #f9f5d7
+gray = #585858
+black = #090909
+red = #db3f3f
+blue = #95aec7
+yellow = #c7ae95
+green = #aec795
+background = #111313
+background-alt = #111313
+foreground = #f9f5d7
+foreground-alt = #f9f5d7
+primary = #111313
+secondary = #d79921
+alert = #db2f2f
 
 
-[bar/bar]
+[bar/top]
+enable-ipc = true
 monitor = ${env:MONITOR:eDP1}
-height = 24
+dpi = 110
+height = 21
 
 padding-right = 0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-font-0 = "Inconsolata Nerd Font:pixelsize=14;2"
-font-1 = "FontAwesome:pixelsize=14;2"
+font-0 = "Font Awesome 5 Free:pixelsize=7:style=Solid;2"
+font-1 = "Font Awesome 5 Brands:pixelsize=7;2"
+font-2 = "curie:pixelsize=10;2"
 
 module-margin-left = 2
 module-margin-right = 1
 
 modules-left = i3
-modules-center = mpd
+modules-center = mpd title
 modules-right = wifi vpncheck backlight keyboard pavolume battery date
+
+
+[bar/bottom]
+enable-ipc = true
+monitor = ${env:MONITOR:eDP1}
+dpi = 110
+height = 21
+
+padding-right = 0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+font-0 = "Font Awesome 5 Free:pixelsize=8:style=Solid;2"
+font-1 = "Font Awesome 5 Brands:pixelsize=8;2"
+font-2 = "Iosevka Term:pixelsize=9;2"
+
+module-margin-left = 2
+module-margin-right = 1
+
+modules-left =
+modules-center =
+modules-right =
+
+; Position of the system tray window
+; If empty or undefined, tray support will be disabled
+; NOTE: A center aligned tray will cover center aligned modules
+;
+; Available positions:
+;   left
+;   center
+;   right
+tray-position = right
+
+; If true, the bar will not shift its
+; contents when the tray changes
+tray-detached = false
+
+; Tray icon max size
+tray-maxsize = 16
+
+; Enable pseudo transparency
+; Will automatically be enabled if a fully transparent
+; background color is defined using `tray-background`
+tray-transparent = false
+
+; Background color for the tray container
+; By default the tray container will use the bar
+; background color.
+; Note: 32 bit alpha blending is not supported.
+tray-background = ${root.background}
+
+; Tray offset defined as pixel value (e.g. 35) or percentage (e.g. 50%)
+tray-offset-x = 0
+tray-offset-y = 0
+
+; Pad the sides of each tray icon
+tray-padding = 0
+
+; Scale factor for tray clients
+tray-scale = 1.0
 
 
 [module/i3]
@@ -42,18 +115,24 @@ type = internal/i3
 
 format = <label-state> <label-mode>
 
-label-focused = %index%
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-default = 
+
+label-focused = %icon%
 label-focused-foreground = #242529
 label-focused-background = #FB546E
 label-focused-padding = 1
 
-label-unfocused = %index%
+label-unfocused = %icon%
 label-unfocused-padding = 1
 
-label-visible = %index%
+label-visible = %icon%
 label-visible-padding = 1
 
-label-urgent = %index%
+label-urgent = %icon%
 label-urgent-foreground = #000000
 label-urgent-background = #bd2c40
 label-urgent-padding = 1
@@ -72,7 +151,7 @@ format-discharging = <ramp-capacity> <label-discharging>
 format-full = <ramp-capacity> <label-full>
 
 
-label-discharging = %percentage%%  (%consumption%w)
+label-discharging = %percentage%%    (%consumption%w)
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -92,7 +171,7 @@ animation-charging-framerate = 750
 [module/keyboard]
 type = internal/xkeyboard
 
-format = ⌨ <label-layout>
+format =  <label-layout>
 
 
 [module/date]
@@ -163,6 +242,23 @@ port = 6600
 password =
 
 label-song = ♫ %artist% - %title%
+
+
+[module/title]
+type = internal/xwindow
+
+; Available tags:
+;   <label> (default)
+format = <label>
+format-background = ${colors.background}
+format-foreground = ${colors.foreground-alt}
+format-padding = 4
+
+; Available tokens:
+;   %title%
+; Default: %title%
+label = %title%
+label-maxlen = 50
 
 
 [settings]

@@ -18,6 +18,8 @@ font pango:Roboto 19
 for_window [class=".*"] border pixel 0
 hide_edge_borders both
 
+for_window [title="(?i)authy"] floating enable
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -250,7 +252,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id feh --randomize --bg-scale ~/.wallpapers/
 exec_always --no-startup-id xautolock -time 5 -locker "/home/patrik/bin/betterlockscreen -l dimblur"
 exec_always --no-startup-id dunst
-exec_always --no-startup-id compton -b --xrender-sync-fence --xrender-sync
+# exec_always --no-startup-id compton -b
 exec_always --no-startup-id setxkbmap -option "grp:alt_shift_toggle,caps:ctrl_modifier" us,se
 exec_always --no-startup-id udiskie
 exec --no-startup-id redshift
