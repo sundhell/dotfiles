@@ -76,5 +76,7 @@ Plug 'vim-scripts/SQLUtilities'
 Plug 'vim-scripts/Align'
 Plug 'vimperator/vimperator.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'hashivim/vim-terraform'
+Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
 
 call plug#end()
