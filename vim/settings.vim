@@ -129,6 +129,8 @@ let g:neomake_json_enabled_makers = ['jsonlint']
 let g:neomake_ruby_enabled_makers = ['rubocop']
 let g:neomake_css_enabled_makers = ['stylelint']
 let g:neomake_yaml_enabled_makers = ['yamllint']
+let g:neomake_shell_enabled_makers = ['shellcheck']
+let g:neomake_dockerfile_enabled_makers = ['hadolint']
 autocmd! BufWritePost * Neomake
 
 "
