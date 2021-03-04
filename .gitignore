@@ -17,3 +17,5 @@ weechat/*.cache
 
 vim/.undo/
 vim/.backup/
+
+fish/fish_variables
