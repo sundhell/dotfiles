@@ -14,12 +14,11 @@
 	st = status
 	br = branch
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
 [push]
 	default = upstream
 [core]
 	excludesfile = ~/.gitignore_global
-[init]
-	templatedir = ~/.git_template
 [gist]
 	private = true
 [filter "media"]
@@ -29,6 +28,9 @@
 [github]
 	user = sundhell
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
+[pull]
+	rebase = false
