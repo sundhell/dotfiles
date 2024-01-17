@@ -1,2 +1,0 @@
-#!/bin/sh
-/usr/bin/perl -pe 'use MIME::Words(decode_mimewords); $_=decode_mimewords($_);'

@@ -1,5 +1,0 @@
-rofi.font: curie 10
-rofi.terminal: alacritty
-rofi.ssh-client: ssh
-rofi.ssh-command: {terminal} -e "{ssh-client} {host}"
-rofi.theme: gruvbox-dark

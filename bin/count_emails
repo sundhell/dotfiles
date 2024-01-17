@@ -1,9 +1,0 @@
-#!/bin/sh
-
-MAIL_DIR=~/.mail/*/inbox/new/*
-COUNT=`ls -l $MAIL_DIR | wc -l `
-
-if [ $COUNT -gt 0 ]
-then
-	echo '#[bg=colour215,fg=colour16,bold] ✉' $COUNT '#[fg=colour254,bg=colour137,nobold]'
-fi
