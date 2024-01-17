@@ -98,22 +98,6 @@ autocmd FocusGained * :set relativenumber
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 
-"
-" ============== SNIPPETS ==============
-"
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger           = '<tab>'
-let g:UltiSnipsJumpForwardTrigger      = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
-let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-" PDV
-let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
-nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 
 "
 " ============== NEOVIM ==============
@@ -132,16 +116,6 @@ let g:neomake_yaml_enabled_makers = ['yamllint']
 let g:neomake_shell_enabled_makers = ['shellcheck']
 let g:neomake_dockerfile_enabled_makers = ['hadolint']
 autocmd! BufWritePost * Neomake
-
-"
-" ============== GOYO ==============
-"
-let g:goyo_width = '80'
-let g:goyo_height = '80%'
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
-let g:html_indent_inctags = "html,body,head,tbody"
 
 "
 " ============== FZF ==============

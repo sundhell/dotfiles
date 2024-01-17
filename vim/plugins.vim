@@ -8,7 +8,6 @@ Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ngmy/vim-rubocop'
 Plug 'rizzatti/funcoo.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'Lokaltog/vim-easymotion'
@@ -20,9 +19,10 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'mileszs/ack.vim'
 Plug 'benekastah/neomake'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
-Plug 'joonty/vdebug'
 Plug 'alvan/vim-closetag'
 Plug 'sbdchd/neoformat'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ap/vim-css-color'
 
 " File handling
 Plug 'scrooloose/nerdtree'
@@ -45,11 +45,8 @@ Plug 'gilgigilgil/anderson.vim'
 Plug 'morhetz/gruvbox'
 Plug 'alessandroyorba/sierra'
 Plug 'dylanaraps/wal.vim'
-
-" Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'Valloric/YouCompleteMe'
+Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'phanviet/vim-monokai-pro'
 
 " File type plugins
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
@@ -60,17 +57,15 @@ Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'solarnz/thrift.vim', { 'for': 'thrift' }
 Plug 'tpope/vim-markdown'
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
-Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'shime/vim-livedown'
 Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
 Plug 'markcornick/vim-vagrant', { 'for': 'vagrant' }
 Plug 'posva/vim-vue', { 'for': 'vue' }
+Plug 'jwalton512/vim-blade'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tobyS/pdv'
 Plug 'kylef/apiblueprint.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'uarun/vim-protobuf'
 Plug 'vim-scripts/SQLUtilities'
 Plug 'vim-scripts/Align'
@@ -78,5 +73,6 @@ Plug 'vimperator/vimperator.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'hashivim/vim-terraform'
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries'}
+Plug 'tasn/vim-tsx'
 
 call plug#end()
