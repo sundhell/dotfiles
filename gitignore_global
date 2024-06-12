@@ -6,3 +6,4 @@ tags
 .vagrant/
 tmp/*
 .node-version
+.tool-versions
