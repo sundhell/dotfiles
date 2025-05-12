@@ -60,7 +60,6 @@ Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'shime/vim-livedown'
 Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
-Plug 'markcornick/vim-vagrant', { 'for': 'vagrant' }
 Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'jwalton512/vim-blade'
 Plug 'tmux-plugins/vim-tmux-focus-events'
