@@ -1,1 +1,0 @@
-bind \ce edit_command
